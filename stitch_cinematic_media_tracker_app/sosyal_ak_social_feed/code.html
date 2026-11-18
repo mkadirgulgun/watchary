@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-low": "#1a1b22", "outline-variant": "#534434", "on-tertiary-container": "#6a3700", "surface-container-lowest": "#0d0e15", "error-container": "#93000a", "outline": "#a08e7a", "inverse-surface": "#e3e1ec", "primary-container": "#f59e0b", "surface-bright": "#383941", "on-error": "#690005", "primary": "#ffc174", "surface-dim": "#12131a", "secondary-fixed-dim": "#f9bd22", "on-surface-variant": "#d8c3ad", "surface-variant": "#34343c", "error": "#ffb4ab", "surface-tint": "#ffb95f", "inverse-primary": "#855300", "on-tertiary-fixed-variant": "#6e3900", "inverse-on-surface": "#2f3038", "on-surface": "#e3e1ec", "on-primary-fixed-variant": "#653e00", "on-primary-fixed": "#2a1700", "secondary-fixed": "#ffdf9f", "on-tertiary-fixed": "#2f1500", "tertiary": "#ffc08e", "background": "#12131a", "primary-fixed": "#ffddb8", "tertiary-container": "#ff9837", "surface-container-highest": "#34343c", "secondary": "#ffc640", "on-primary-container": "#613b00", "secondary-container": "#e3aa00", "on-background": "#e3e1ec", "surface": "#12131a", "tertiary-fixed": "#ffdcc3", "surface-container": "#1e1f26", "on-secondary": "#402d00", "on-secondary-container": "#5a4100", "on-primary": "#472a00", "primary-fixed-dim": "#ffb95f", "on-error-container": "#ffdad6", "tertiary-fixed-dim": "#ffb77d", "surface-container-high": "#292931", "on-secondary-fixed-variant": "#5c4300", "on-secondary-fixed": "#261a00", "on-tertiary": "#4d2600" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-md": "1.5rem", "space-xs": "0.25rem", "space-md": "0.75rem", "gutter-md": "1rem", "margin": "1rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-lg": "1.25rem", "gutter": "0.75rem" }, "fontFamily": { "body-lg": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "display-lg": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "label-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "display-lg-mobile": ["Plus Jakarta Sans"], "data-mono": ["Inter"], "body-md": ["Inter"] }, "fontSize": { "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-lg-mobile": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-sm": ["16px", { "lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }], "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.06em", "fontWeight": "700" }], "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "display-lg-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.025em", "fontWeight": "800" }], "data-mono": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }] } } } };</script><style>body { min-height: max(884px, 100dvh); }</style></head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.5)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="CineTrack Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UmkODMW3yZYUjFWc5njAjQ28Nlt3TMQygp8XdAl2Muu02M66Clw4GojgxOEpXd_v5jAvYjK5POhSgr3dYCSWY7bSvJQXQlPPx3Qvpek6q1_lsoebRw9uGqa7cy5EWOxTAs3JtqxLlBuX0QQ_GCsLuYzPXa1uylIM0CWtDK85EpWMrYDh0PeI1xFNttq5cS3vQwsPy0z95M5nCqfy7wwpXtQw0WCfKUIJawJJOwXMM46c4DIoKk355IAxc"/><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold">CineTrack</span></div><div class="flex items-center gap-space-xs"><a aria-label="Global Search" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary transition-colors" data-path="global-search-and-advanced-filters" href="#"><span class="material-symbols-outlined text-[22px]">search</span></a><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary relative transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary-container ring-2 ring-surface-container-lowest"></span></button><div class="ml-space-xs flex items-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjLKebsX0bFldBf8CQ5zOPOBRDtBKT_LN1V7JlEb0UmpLZvC2MtPkuPXEHArbPL75SZRH3_5BQs6XLxMyTEbVtT2M6FUqgEy1r-sCv4rHJ11DPP3oWyDOZATx8rJq--HHgvHqmVEDYlDGkNM3Rv1BaLoddGZ6rcjQrA6A8fYfVxONnOXsgr7bnGVp5sZM8nYM3yKxMmym41T6yqn7EIUhMfKJWUu7Tb4iVsRx_Shm_A53x_FDycywC"/></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full px-margin pb-6 space-y-space-lg">
+<!-- Activity Header Context & Live Pulse Indicator -->
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="relative flex items-center justify-center w-2.5 h-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight">Activity Feed</h1>
+</div>
+<!-- Quick Filter Mode Trigger -->
+<button aria-label="Sort options" class="flex items-center justify-center w-9 h-9 rounded-full bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[19px]">tune</span>
+</button>
+</div>
+<!-- Segmented Pill Bar (Scrollable for Mobile) -->
+<div class="overflow-x-auto no-scrollbar -mx-margin px-margin">
+<div class="flex items-center gap-space-xs p-1 bg-surface-container-lowest rounded-full w-max shadow-sm" id="feed-filter-track">
+<button class="feed-pill px-4 py-1.5 rounded-full bg-surface-container-high text-primary font-label-md text-label-md transition-all shadow-sm flex items-center gap-1.5" data-filter="friends">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">group</span>
+<span>Friends</span>
+</button>
+<button class="feed-pill px-4 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all" data-filter="following">
+        Following
+      </button>
+<button class="feed-pill px-4 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all" data-filter="popular">
+        Global Popular
+      </button>
+<button class="feed-pill px-4 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all" data-filter="discussions">
+        Discussions
+      </button>
+</div>
+</div>
+<!-- Live Cinephile Status Rail (Ephemeral watches) -->
+<div class="flex flex-col gap-space-xs -mx-margin px-margin">
+<div class="flex items-center justify-between text-on-surface-variant px-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Watching Right Now</span>
+<span class="font-data-mono text-data-mono text-primary">8 friends live</span>
+</div>
+<div class="flex gap-space-md overflow-x-auto no-scrollbar py-1">
+<!-- Friend 1 Live -->
+<div class="flex flex-col items-center gap-1 min-w-[56px]">
+<div class="relative p-0.5 rounded-full bg-gradient-to-tr from-primary via-primary-container to-secondary">
+<img class="w-12 h-12 rounded-full object-cover bg-surface-container" data-alt="Candid high contrast portrait of a young cinephile with neon cyan and amber theater rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmYKNfcs5-m6Yzi6pSZuebCviJpZ9ioi32-v55jZ1_XH9eXAbR85vq9TVcZdjvHvHFjSEqT7Ki0vF3ZP8I9AdPFMN3uyC7q0pzMrHFb10JCSJoilJSDMoRLtT9pZ3fBr1_GQ2HBzKnf_Cxl4nYoS7sqDw_fRp5dJq0IbVTfmqEb3sASGRicPK13XQOby7JDEl5dBbuw1YRnZPrB5-R1CBGvxyP8IB7M_27Xsmd_EgjJYJpWJXtJ-zz"/>
+<span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-primary-container flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[10px] text-on-primary-container font-bold" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface truncate max-w-[58px]">Sarah</span>
+</div>
+<!-- Friend 2 Live -->
+<div class="flex flex-col items-center gap-1 min-w-[56px]">
+<div class="relative p-0.5 rounded-full bg-gradient-to-tr from-primary via-primary-container to-secondary">
+<img class="w-12 h-12 rounded-full object-cover bg-surface-container" data-alt="Close up profile photo of a person wearing headphones bathed in dark golden cinema projector light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnVU1s_n7_v2XBuXntXQvn3Yuq-iRU6Yq7dZlNR1Mtx8BwvrsYHITyzWC3LJ1pp8Ierjv--9XO_i2At7wcRDrp49WzTN9fV3hVmNWriOD2eDKBe0YLyV1fdJ3N9kdBIRT57zAMsnhKWth3xjzq_0bFj4-dEinfEq4RiJPNcPLm5mz7rCsjkGrnw6xISCFvLog5jIyrtNCFVAQgyy2jJeT2B3KNfeHhDPnC1F56P-Pa_XeNVUvlsHru"/>
+<span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-primary-container flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[10px] text-on-primary-container font-bold" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface truncate max-w-[58px]">Liam K.</span>
+</div>
+<!-- Friend 3 Logged recently -->
+<div class="flex flex-col items-center gap-1 min-w-[56px]">
+<div class="relative p-0.5 rounded-full bg-surface-container-high">
+<img class="w-12 h-12 rounded-full object-cover bg-surface-container" data-alt="Intense dramatic portrait of a woman looking sideways in an atmospheric dark theater lounge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu3IkGm49xuJMzjsWvfX_ttLyJlqBFSCzXy1X05NJJBepsv0a9ozmDf9AZPEuXnomU_CCBQ17EBaZbCERE-eVEBT9BmRY_uw0UImrDeVE4hleEB0Fi8gmZCioxtO4MyQDbmV0jsOmRqpoPxHWBKN-xi21uOCSq78iZx8dm9Vc9qPPFSr5vcN7Iq1_XzXACo484cyynthwFGydN6G8LzkrL5kxL6qeLKdmea6PLqKEh-pPtjMshOyIt"/>
+<span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-[9px] text-on-surface-variant font-bold" style="font-variation-settings: 'FILL' 1;">check</span>
+</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[58px]">Zoe M.</span>
+</div>
+<!-- Friend 4 Logged recently -->
+<div class="flex flex-col items-center gap-1 min-w-[56px]">
+<div class="relative p-0.5 rounded-full bg-surface-container-high">
+<img class="w-12 h-12 rounded-full object-cover bg-surface-container" data-alt="Moody cinematic portrait of an artsy young man with warm golden key lighting against a deep black void" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoUMhaV248EHvqFIf4FKnp3yy1_E6I43XOHC_lLyc8Xs-LqW9GysR0Yv-GMKicEFnxs0Q24AIoivbMhYgPHo-pf2x2bAG81VYqTrrpHCKjvZWhB5H6G8-n_UDq1vwaAQrC1kbdAQK9bHdZXcs5cWO1eOsLzvr2VlDmzB7AsA14bEUyXEqDP415IR8CETx6HtZk53zOQei-YrArCngOr8tT7PqhEGT8_nLuvO63TMqP8-7a6RUqsO0p"/>
+<span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-[9px] text-on-surface-variant font-bold" style="font-variation-settings: 'FILL' 1;">check</span>
+</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[58px]">Devon</span>
+</div>
+<!-- Quick Add Log Bubble -->
+<button aria-label="Quick log" class="flex flex-col items-center justify-center gap-1 min-w-[56px] group">
+<div class="w-13 h-13 rounded-full bg-surface-container-low flex items-center justify-center text-primary group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Log Movie</span>
+</button>
+</div>
+</div>
+<!-- FEED CONTAINER -->
+<div class="flex flex-col space-y-space-md">
+<!-- FEED ITEM 1: Film Review (Marcus Vance - Dune: Part Two) -->
+<article class="flex flex-col bg-surface-container rounded-xl p-4 shadow-md transition-all">
+<!-- Author Row -->
+<div class="flex items-start justify-between gap-space-sm mb-3">
+<div class="flex items-center gap-space-sm">
+<img class="w-10 h-10 rounded-full object-cover bg-surface-container-high flex-shrink-0" data-alt="Expressive portrait photograph of an African American man in warm tungsten light smiling thoughtfully" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVi3q7RSJDb3PTiq36iEElKsuBpX2IOozVHQbSRqWNEYfCMzSeGK3DnPd1qok1N6G2_kulPPT_UQn6n7Zr_sfXhFsDA8W2d5Hyd65n9gzTyZ9ziGAxtp1bwuHcU-EiCU7eTCVUw1tFwQbkdPPbKRg49HHBQZlg-FL7k6d4EBijnj9hMYMxUkcZZFYecQK1B500tiCuwnz4hkz4um-a22XBztDqKwsibrxnyVeZhbj_ju5OqJ6j34Nq"/>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Marcus Vance</span>
+<span class="font-label-sm text-label-sm text-outline">reviewed</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-data-mono text-data-mono text-on-surface-variant">2h ago</span>
+<span class="w-1 h-1 rounded-full bg-surface-container-highest"></span>
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px]">theaters</span>
+                IMAX 70mm
+              </span>
+</div>
+</div>
+</div>
+<!-- More options -->
+<button aria-label="Item options" class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</div>
+<!-- Film Title & 5-Star Rating Header -->
+<div class="flex items-start justify-between gap-space-md bg-surface-container-low rounded-lg p-3 mb-3">
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap mb-1">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Dune: Part Two</span>
+<span class="font-data-mono text-data-mono text-outline">2024</span>
+</div>
+<!-- 5 Golden Rating Stars -->
+<div class="flex items-center gap-0.5 text-primary">
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-primary ml-1.5 font-bold">5.0</span>
+</div>
+</div>
+<!-- Mini Poster Thumbnail (2:3 Aspect Ratio) -->
+<div class="w-14 h-20 rounded-md overflow-hidden bg-surface-container-lowest flex-shrink-0 shadow-sm relative group">
+<img class="w-full h-full object-cover" data-alt="Cinematic movie poster for Dune Part Two showing towering orange sand dunes of Arrakis with dramatic silhouettes under a blazing sun in high contrast sci-fi aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjE6xRaVQdcgM9zt8oSt4SMGr0mtDPWRn0fcMZZS_I9UjlRa3Goc2v_JUeTupBDWlhb9AJfem-E2ju8fRCseRhl-V66mkNMSKwKq8GVOTsTQA7KAf-PflVBLMMz8zl9xTo85aoTim66vEphczaIypmkHAawUcUoX3Cae2NL7GgROzdKC_VvPJhmf5e6PrnKDXS9VqCV8PKamn9EAN__02WSWfHZqs78pPUNRoysgrJGhaX_uR7p-Uz"/>
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+</div>
+<!-- Review Text Body -->
+<p class="font-body-md text-body-md text-on-surface mb-3 line-clamp-3 leading-relaxed">
+        Denis Villeneuve and Hans Zimmer delivered a sensory assault that vibrates in your chest. The sound design during the sandworm mounting sequence is pure, unadulterated auditory cinema. An instant masterwork in modern science-fiction.
+      </p>
+<!-- Interactive Action Bar -->
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-space-md">
+<!-- Like Button -->
+<button class="like-btn flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors py-1 px-1 rounded" onclick="toggleLike(this, 243)">
+<span class="material-symbols-outlined text-[20px] heart-icon transition-transform">favorite</span>
+<span class="font-data-mono text-data-mono like-count">243</span>
+</button>
+<!-- Comment Button -->
+<button class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors py-1 px-1 rounded">
+<span class="material-symbols-outlined text-[20px]">chat_bubble_outline</span>
+<span class="font-data-mono text-data-mono">42</span>
+</button>
+<!-- Share Button -->
+<button aria-label="Share review" class="flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors py-1 px-1 rounded">
+<span class="material-symbols-outlined text-[19px]">ios_share</span>
+</button>
+</div>
+<!-- Add to Watchlist quick button -->
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors text-label-sm font-label-sm bg-surface-container-high px-2.5 py-1 rounded-full">
+<span class="material-symbols-outlined text-[15px]">bookmark_add</span>
+<span>Watchlist</span>
+</button>
+</div>
+</article>
+<!-- FEED ITEM 2: TV Episode Log with Spoiler Blur (Elena Rostova - Severance) -->
+<article class="flex flex-col bg-surface-container rounded-xl p-4 shadow-md transition-all">
+<!-- Author Row -->
+<div class="flex items-start justify-between gap-space-sm mb-3">
+<div class="flex items-center gap-space-sm">
+<img class="w-10 h-10 rounded-full object-cover bg-surface-container-high flex-shrink-0" data-alt="Portrait photograph of a woman with braided hair and tortoiseshell glasses against an aesthetic dark green and amber interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB6kVAkLp0suBG2yJ-MD3BCMRA89XkNbLEIVha20nc52B8qJDiMaNY5AxVrzpwOzipIcuNKZiqy8P2K-0buH1FBpoRvXhZZU4yIk2kDzPGohKLUqx59grn5WX9Oem6SLEAOgBO9yV0vgOnxAxEZhfJmsj1iWUjhnpOUQjx4TrQrPwya9cpROuIN5LslrlQv0QXF8nIZW7qCk6jtrvo_iwg497CgD8YPOn6fWyvHeY_bx3BxnpVZkSt"/>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Elena Rostova</span>
+<span class="font-label-sm text-label-sm text-outline">watched an episode</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-data-mono text-data-mono text-on-surface-variant">4h ago</span>
+<span class="w-1 h-1 rounded-full bg-surface-container-highest"></span>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px]">tv</span>
+                Season Premiere
+              </span>
+</div>
+</div>
+</div>
+<button aria-label="Item options" class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</div>
+<!-- Episode Card Banner -->
+<div class="flex flex-col bg-surface-container-low rounded-lg p-3 mb-3">
+<div class="flex items-start justify-between gap-space-sm mb-2">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-primary-container/20 text-primary font-bold tracking-wide">S2 : E1</span>
+<span class="font-data-mono text-data-mono text-outline">"Hello Ms. Cobel"</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Severance</span>
+</div>
+<!-- Half Star Rating (4.5/5) -->
+<div class="flex items-center gap-0.5 text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star_half</span>
+<span class="font-label-sm text-label-sm text-primary font-bold ml-1">4.5</span>
+</div>
+</div>
+<!-- 16:9 Episode Thumbnail with Watch Mark -->
+<div class="relative w-full h-32 rounded-md overflow-hidden bg-surface-container-lowest mt-1 shadow-inner">
+<img class="w-full h-full object-cover" data-alt="A cold minimalist corporate fluorescent office hallway with symmetrical green carpet and clinical white walls from the television series Severance in eerie lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjjaainyeEgN1IopKBu0IhXPvrsT0nQHkg6bWui1xRecF0o9qyjvcYrnsOI9y2EtZfzQH20JsdvbsJc6APixbR_yJ1CM7DoWb1kzit4rtRYQgDeMb9e-GqRAsnFZy7QXb1pVB1kK5WlG3iLJDGPZTP6kTbYYYGFl6jTCYGDSyIZYxZ4g4ipGsodAUFHaQVCtbixma4TUpdTQ7Nf8rpQ7Or6R-v8wYOmVWcEeNnH_zA--ig6OyC2WFO"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-2.5 left-3 flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[17px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-sm text-label-sm font-medium">Logged on Lumon terminal</span>
+</div>
+</div>
+</div>
+<!-- Spoiler Content Box (Interactive Click to Reveal) -->
+<div class="relative mb-3 rounded-lg overflow-hidden cursor-pointer group" id="spoiler-card-1" onclick="toggleSpoiler('spoiler-card-1')">
+<div class="p-3 bg-surface-container-high rounded-lg text-body-md font-body-md text-on-surface filter blur-sm transition-all duration-300 select-none spoiler-text">
+          That revelation about Irving and the elevator code change completely flips the season 1 finale on its head. The pacing is breathless from the second minute.
+        </div>
+<div class="absolute inset-0 flex items-center justify-center bg-surface-container-highest/80 backdrop-blur-md rounded-lg spoiler-badge transition-opacity">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container text-primary shadow-lg">
+<span class="material-symbols-outlined text-[16px]">visibility_off</span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wide">Spoilers hidden • Tap to view</span>
+</div>
+</div>
+</div>
+<!-- Interactive Action Bar -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-space-md">
+<button class="like-btn flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors py-1 px-1 rounded" onclick="toggleLike(this, 88)">
+<span class="material-symbols-outlined text-[20px] heart-icon transition-transform">favorite</span>
+<span class="font-data-mono text-data-mono like-count">88</span>
+</button>
+<button class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors py-1 px-1 rounded">
+<span class="material-symbols-outlined text-[20px]">chat_bubble_outline</span>
+<span class="font-data-mono text-data-mono">19</span>
+</button>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors text-label-sm font-label-sm bg-surface-container-high px-2.5 py-1 rounded-full">
+<span class="material-symbols-outlined text-[15px]">playlist_add_check</span>
+<span>Up Next</span>
+</button>
+</div>
+</div>
+</article>
+<!-- FEED ITEM 3: Curated List Collage (Kenji Sato - Mind-Bending Sci-Fi) -->
+<article class="flex flex-col bg-surface-container rounded-xl p-4 shadow-md transition-all">
+<!-- Author Row -->
+<div class="flex items-start justify-between gap-space-sm mb-3">
+<div class="flex items-center gap-space-sm">
+<img class="w-10 h-10 rounded-full object-cover bg-surface-container-high flex-shrink-0" data-alt="Artistic monochrome with amber glow portrait of a Japanese designer with round glasses and stylish haircut" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQUzLjpqaFMtZ3dNcWuANUg23oLUWM5bPjzKvOeqoRXPp0Z0Iwsws4ORkrOtsmonKiZwQ1Fm2JBXJhtvM__OPPDh4gquToPCHoHPWKg_Yh7DNc3tHxk8K0Oi2-lKyODJ97Wl14M_Rp09FrFgESTaabN-y9RtcP2sNGWfsv1-bNFmkfo1wIqQpCOJSG6UnL5dwBkjDiJjd16T0j2zTW3hHmEK91JNkDn8_DRE2KE-L6lpAhnnhUlnYH"/>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Kenji Sato</span>
+<span class="font-label-sm text-label-sm text-outline">published a list</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-data-mono text-data-mono text-on-surface-variant">6h ago</span>
+<span class="w-1 h-1 rounded-full bg-surface-container-highest"></span>
+<span class="font-label-sm text-label-sm text-primary font-bold">18 films</span>
+</div>
+</div>
+</div>
+<!-- Interactive Bookmark Collection -->
+<button aria-label="Save list" class="bookmark-btn w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-primary transition-all" onclick="toggleBookmark(this)">
+<span class="material-symbols-outlined text-[20px] transition-transform">bookmark_border</span>
+</button>
+</div>
+<!-- List Title & Description -->
+<div class="mb-3">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight mb-1">
+          Mind-Bending Sci-Fi of the 2020s
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">
+          Existential dread, recursive time loops, and cosmic indifference. Rated by cerebral density.
+        </p>
+</div>
+<!-- 4 Overlapping Mini Poster Preview Collage -->
+<div class="relative w-full h-36 bg-surface-container-low rounded-lg p-3 flex items-center justify-center overflow-hidden mb-3">
+<!-- Ambient projection backdrop glow -->
+<div class="absolute inset-0 bg-gradient-to-r from-primary/10 via-tertiary-container/10 to-transparent pointer-events-none"></div>
+<div class="relative flex items-center justify-center w-full max-w-[280px] h-28">
+<!-- Poster 1: Leftmost tilted -->
+<div class="absolute left-2 w-18 h-26 rounded-md overflow-hidden shadow-lg transform -rotate-12 hover:-rotate-6 transition-transform duration-300 z-10 bg-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="Vertical movie poster of Everything Everywhere All at Once featuring a fractured kaleidoscopic multiverse with deep violet and warm golden light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPx47sXaKXEeUz1eAyPVsfGWN4xRo_4Lu9fZR_YqDV7bmI2jbOQdOrme-zWSyFFUanz8yCsE1JJjj2VnwitzPuKezRgPEjM8KlaJYnUJ00WC0rOMNbL6_ifoKiX8sFPll41cBjS92ZjDwe_PVvuMh1J5rZeL1EGW854neaIOLvhaOnbbBLc8Fku8gx1JTyuc9oBWyc1sOJhGP293Am5-T5BMFy-5m4NSS9ebdikyDNU6lhhY7gxVmZ"/>
+</div>
+<!-- Poster 2: Center Left -->
+<div class="absolute left-16 w-19 h-27 rounded-md overflow-hidden shadow-xl transform -rotate-4 hover:rotate-0 transition-transform duration-300 z-20 bg-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="Minimalist vertical sci-fi film poster of Tenet featuring an inverted silhouette walking through an orange explosion against cold blue harbor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbmFNQJzlKOpo5t2trN1w07U43L9VeN_iDAIFBq22BUUJyuvC8aY7gEnyWOGVitJWExxlb0on8NZ_Q-7ao2dNVzpxanuN5T2Bqg_4IHzGunIl9_s6CZhH2cyFgqUI1bGyC39LKinH-rV03EsT17dUHq7rvCFZh0-WIHfqn8g0d4BXnEcgqAPpKKvI4tin1XnTK-8ua6KP0OPjWkXihzOscnwTOPVqs4NwJEMC3gwNvTGGHtoidMoLc"/>
+</div>
+<!-- Poster 3: Center Right -->
+<div class="absolute right-16 w-19 h-27 rounded-md overflow-hidden shadow-xl transform rotate-4 hover:rotate-0 transition-transform duration-300 z-30 bg-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="Atmospheric movie poster for Dune Part One showing Paul Atreides standing before a gigantic spice harvester sandstorm under golden sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6oz9XfaUMjToJP_BQsFE1slOA7mCSUk3uRZesCHSo2aeUcn-pFdg0Dk6gXPG_H1qkt3mn5Hd71uxrGGKZJdac6-vDDsLH680q1J7SOnOSt4UlZ7FYBQgwGlx0P8hmN-VnbxQ-UdaRrD_-Dv86rG0TTFVpxCXQk6bUffGDsS4imBeJuZBqo_rMZ_-1aQ8bmgJjCJfUJKOCx65T0kzsTRxGzit7ojRxQwrUQyo9CcRO0y6J7qPxgHbq"/>
+</div>
+<!-- Poster 4: Rightmost tilted -->
+<div class="absolute right-2 w-18 h-26 rounded-md overflow-hidden shadow-lg transform rotate-12 hover:rotate-6 transition-transform duration-300 z-20 bg-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="Surrealistic movie poster for The Creator showing futuristic robotic cybernetic eyes with amber reflections in a dystopian Southeast Asian neon rainscape" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATow6It7QPZbdXABHOvACaYRAZQ9n4lqFk-2cm1-3XsUqbhP4bvm2tKkpj9MjWJymslPI5lBVHDgO0rJqFQvpNcEOuc5Zhga8NA4fz0f6PRcYX7hk17m1pdNF0W43fchZFr4IuPqb8UH5klXw32Rwpv3bnc96EywwZe_mSIjGFcvQWIbnji4QzN63AD1ZlGBtK3rHOvl5b1BcnrArwFtTNtI18cDgjlom-NU6DoR2Duac_2ZQPpzjx"/>
+</div>
+<!-- List Count Floating Badge -->
+<div class="absolute -bottom-1 right-2 z-40 bg-surface-container-highest/95 backdrop-blur-md px-2 py-0.5 rounded-full text-on-surface font-label-sm text-label-sm flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[13px] text-primary">collections_bookmark</span>
+<span>+14 more</span>
+</div>
+</div>
+</div>
+<!-- Action Footer for List -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-space-md">
+<button class="like-btn flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors py-1 px-1 rounded" onclick="toggleLike(this, 512)">
+<span class="material-symbols-outlined text-[20px] heart-icon transition-transform">favorite</span>
+<span class="font-data-mono text-data-mono like-count">512</span>
+</button>
+<button class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors py-1 px-1 rounded">
+<span class="material-symbols-outlined text-[20px]">chat_bubble_outline</span>
+<span class="font-data-mono text-data-mono">67</span>
+</button>
+</div>
+<button class="flex items-center gap-1.5 font-label-md text-label-md text-primary hover:text-primary-fixed transition-colors">
+<span>Explore List</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+</div>
+<!-- End of Feed Moment of Delight / Catch up State -->
+<div class="flex flex-col items-center justify-center p-6 mt-2 rounded-xl bg-surface-container-low text-center">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-primary mb-2 shadow-inner">
+<span class="material-symbols-outlined text-[26px]">movie_filter</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-1">You're All Caught Up</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-[240px]">
+      No new reviews from friends right now. Time to start your next feature.
+    </p>
+<button class="mt-4 px-4 py-2 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md font-bold shadow-md hover:bg-primary transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">shuffle</span>
+<span>Pick Something For Me</span>
+</button>
+</div>
+</div>
+<!-- Client-side Interactive Logic -->
+<script>
+  // Segmented Pill Filter Active State Switcher
+  const filterTrack = document.getElementById('feed-filter-track');
+  if (filterTrack) {
+    const pills = filterTrack.querySelectorAll('.feed-pill');
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => {
+          p.classList.remove('bg-surface-container-high', 'text-primary', 'shadow-sm');
+          p.classList.add('text-on-surface-variant');
+        });
+        pill.classList.remove('text-on-surface-variant');
+        pill.classList.add('bg-surface-container-high', 'text-primary', 'shadow-sm');
+      });
+    });
+  }
+
+  // Interactive Spoiler Toggle
+  function toggleSpoiler(id) {
+    const card = document.getElementById(id);
+    if (!card) return;
+    const text = card.querySelector('.spoiler-text');
+    const badge = card.querySelector('.spoiler-badge');
+    if (text && badge) {
+      if (text.classList.contains('blur-sm')) {
+        text.classList.remove('blur-sm');
+        badge.classList.add('opacity-0', 'pointer-events-none');
+      } else {
+        text.classList.add('blur-sm');
+        badge.classList.remove('opacity-0', 'pointer-events-none');
+      }
+    }
+  }
+
+  // Like Button Micro-spring and Counter Increment
+  function toggleLike(btn, baseCount) {
+    const icon = btn.querySelector('.heart-icon');
+    const countSpan = btn.querySelector('.like-count');
+    const isLiked = btn.dataset.liked === 'true';
+
+    if (!isLiked) {
+      btn.dataset.liked = 'true';
+      icon.style.fontVariationSettings = "'FILL' 1";
+      icon.classList.remove('text-on-surface-variant');
+      icon.classList.add('text-primary');
+      countSpan.textContent = (baseCount + 1).toString();
+      countSpan.classList.add('text-primary');
+
+      // Spring effect
+      icon.classList.add('scale-125');
+      setTimeout(() => icon.classList.remove('scale-125'), 200);
+    } else {
+      btn.dataset.liked = 'false';
+      icon.style.fontVariationSettings = "'FILL' 0";
+      icon.classList.remove('text-primary');
+      icon.classList.add('text-on-surface-variant');
+      countSpan.textContent = baseCount.toString();
+      countSpan.classList.remove('text-primary');
+    }
+  }
+
+  // Bookmark Toggle
+  function toggleBookmark(btn) {
+    const icon = btn.querySelector('.material-symbols-outlined');
+    const isBookmarked = btn.dataset.saved === 'true';
+
+    if (!isBookmarked) {
+      btn.dataset.saved = 'true';
+      icon.textContent = 'bookmark';
+      icon.style.fontVariationSettings = "'FILL' 1";
+      btn.classList.add('text-primary', 'bg-primary/20');
+      btn.classList.remove('text-on-surface-variant', 'bg-surface-container-high');
+    } else {
+      btn.dataset.saved = 'false';
+      icon.textContent = 'bookmark_border';
+      icon.style.fontVariationSettings = "'FILL' 0";
+      btn.classList.remove('text-primary', 'bg-primary/20');
+      btn.classList.add('text-on-surface-variant', 'bg-surface-container-high');
+    }
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_-2px_16px_rgba(0,0,0,0.7)]" data-active-classes="text-primary [filter:drop-shadow(0_0_8px_rgba(245,158,11,0.4))]"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[44px] text-on-surface-variant transition-colors group relative" data-path="discover" href="#"><span class="material-symbols-outlined text-[22px] mb-0.5">explore</span><span class="font-label-sm text-label-sm tracking-wide">Discover</span></a><a aria-current="page" class="flex flex-col items-center justify-center flex-1 h-full min-w-[44px] transition-colors group relative text-primary [filter:drop-shadow(0_0_8px_rgba(245,158,11,0.4))]" data-path="social-activity-feed" href="#"><span class="material-symbols-outlined text-[22px] mb-0.5">dynamic_feed</span><span class="font-label-sm text-label-sm tracking-wide">Activity</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[44px] text-on-surface-variant transition-colors group relative" data-path="up-next" href="#"><div class="relative flex items-center justify-center"><span class="material-symbols-outlined text-[22px] mb-0.5">playlist_play</span><span class="absolute -top-1 -right-2 px-1 min-w-[15px] h-[15px] flex items-center justify-center rounded-full bg-primary-container text-on-primary-container font-label-sm text-[9px] font-bold leading-none">3</span></div><span class="font-label-sm text-label-sm tracking-wide">Up Next</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[44px] text-on-surface-variant transition-colors group relative" data-path="episode-release-calendar" href="#"><span class="material-symbols-outlined text-[22px] mb-0.5">calendar_month</span><span class="font-label-sm text-label-sm tracking-wide">Calendar</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[44px] text-on-surface-variant transition-colors group" data-path="my-list" href="#"><span class="material-symbols-outlined text-[22px] mb-0.5">bookmarks</span><span class="font-label-sm text-label-sm tracking-wide">My List</span></a></div></nav></body></html>

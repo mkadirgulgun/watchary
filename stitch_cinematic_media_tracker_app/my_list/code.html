@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-low": "#1a1b22", "outline-variant": "#534434", "on-tertiary-container": "#6a3700", "surface-container-lowest": "#0d0e15", "error-container": "#93000a", "outline": "#a08e7a", "inverse-surface": "#e3e1ec", "primary-container": "#f59e0b", "surface-bright": "#383941", "on-error": "#690005", "primary": "#ffc174", "surface-dim": "#12131a", "secondary-fixed-dim": "#f9bd22", "on-surface-variant": "#d8c3ad", "surface-variant": "#34343c", "error": "#ffb4ab", "surface-tint": "#ffb95f", "inverse-primary": "#855300", "on-tertiary-fixed-variant": "#6e3900", "inverse-on-surface": "#2f3038", "on-surface": "#e3e1ec", "on-primary-fixed-variant": "#653e00", "on-primary-fixed": "#2a1700", "secondary-fixed": "#ffdf9f", "on-tertiary-fixed": "#2f1500", "tertiary": "#ffc08e", "background": "#12131a", "primary-fixed": "#ffddb8", "tertiary-container": "#ff9837", "surface-container-highest": "#34343c", "secondary": "#ffc640", "on-primary-container": "#613b00", "secondary-container": "#e3aa00", "on-background": "#e3e1ec", "surface": "#12131a", "tertiary-fixed": "#ffdcc3", "surface-container": "#1e1f26", "on-secondary": "#402d00", "on-secondary-container": "#5a4100", "on-primary": "#472a00", "primary-fixed-dim": "#ffb95f", "on-error-container": "#ffdad6", "tertiary-fixed-dim": "#ffb77d", "surface-container-high": "#292931", "on-secondary-fixed-variant": "#5c4300", "on-secondary-fixed": "#261a00", "on-tertiary": "#4d2600" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-md": "1.5rem", "space-xs": "0.25rem", "space-md": "0.75rem", "gutter-md": "1rem", "margin": "1rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-lg": "1.25rem", "gutter": "0.75rem" }, "fontFamily": { "body-lg": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "display-lg": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "label-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "display-lg-mobile": ["Plus Jakarta Sans"], "data-mono": ["Inter"], "body-md": ["Inter"] }, "fontSize": { "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-lg-mobile": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-sm": ["16px", { "lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }], "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.06em", "fontWeight": "700" }], "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "display-lg-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.025em", "fontWeight": "800" }], "data-mono": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }] } } } };</script></head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.5)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="CineTrack Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UmkODMW3yZYUjFWc5njAjQ28Nlt3TMQygp8XdAl2Muu02M66Clw4GojgxOEpXd_v5jAvYjK5POhSgr3dYCSWY7bSvJQXQlPPx3Qvpek6q1_lsoebRw9uGqa7cy5EWOxTAs3JtqxLlBuX0QQ_GCsLuYzPXa1uylIM0CWtDK85EpWMrYDh0PeI1xFNttq5cS3vQwsPy0z95M5nCqfy7wwpXtQw0WCfKUIJawJJOwXMM46c4DIoKk355IAxc"/><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold">CineTrack</span></div><div class="flex items-center gap-space-xs"><button aria-label="Search" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[22px]">search</span></button><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary relative transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary-container ring-2 ring-surface-container-lowest"></span></button><div class="ml-space-xs flex items-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjLKebsX0bFldBf8CQ5zOPOBRDtBKT_LN1V7JlEb0UmpLZvC2MtPkuPXEHArbPL75SZRH3_5BQs6XLxMyTEbVtT2M6FUqgEy1r-sCv4rHJ11DPP3oWyDOZATx8rJq--HHgvHqmVEDYlDGkNM3Rv1BaLoddGZ6rcjQrA6A8fYfVxONnOXsgr7bnGVp5sZM8nYM3yKxMmym41T6yqn7EIUhMfKJWUu7Tb4iVsRx_Shm_A53x_FDycywC"/></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full pb-6">
+<!-- Segmented Top Shelf Tabs -->
+<div class="px-margin pt-space-xs pb-space-sm bg-surface-container-lowest/40 backdrop-blur-md sticky top-0 z-20">
+<div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar py-space-xs">
+<button class="relative px-space-md py-space-xs rounded-full bg-surface-container text-on-surface font-label-md text-label-md flex items-center gap-1.5 whitespace-nowrap shadow-sm group transition-all" onclick="switchMainTab(this, 'Watchlist')">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="text-primary font-bold">Watchlist</span>
+<span class="px-1.5 py-0.5 rounded-full bg-primary/10 text-primary font-data-mono text-[10px]">42</span>
+</button>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1.5 whitespace-nowrap transition-all" onclick="switchMainTab(this, 'Watched')">
+<span>Watched</span>
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-data-mono text-[10px]">384</span>
+</button>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1.5 whitespace-nowrap transition-all" onclick="switchMainTab(this, 'Favorites')">
+<span>Favorites</span>
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-data-mono text-[10px]">18</span>
+</button>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1.5 whitespace-nowrap transition-all" onclick="switchMainTab(this, 'Custom Lists')">
+<span>Custom Lists</span>
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-data-mono text-[10px]">6</span>
+</button>
+</div>
+</div>
+<!-- Filter & Sort Sub-bar -->
+<div class="px-margin mt-space-xs mb-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between gap-space-sm">
+<!-- Format Filter Pills -->
+<div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar">
+<button class="px-3 py-1 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm shadow-[0_0_12px_rgba(245,158,11,0.25)] flex items-center gap-1 transition-all" data-filter="all">
+<span>All</span>
+<span class="opacity-80">42</span>
+</button>
+<button class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-all" data-filter="movies">
+<span>Movies</span>
+<span class="opacity-60 text-[9px]">28</span>
+</button>
+<button class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-all" data-filter="shows">
+<span>Shows</span>
+<span class="opacity-60 text-[9px]">14</span>
+</button>
+</div>
+<!-- Sort & Display Toggles -->
+<div class="flex items-center gap-space-xs shrink-0">
+<button aria-label="Sort options" class="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant hover:text-primary font-label-sm text-label-sm transition-colors">
+<span class="text-on-surface font-medium">Recent</span>
+<span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</button>
+<div class="flex items-center bg-surface-container rounded-lg p-0.5">
+<button aria-label="Grid View" class="w-7 h-7 flex items-center justify-center rounded-md bg-surface-container-highest text-primary shadow-sm">
+<span class="material-symbols-outlined text-[16px]">grid_view</span>
+</button>
+<button aria-label="List View" class="w-7 h-7 flex items-center justify-center rounded-md text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-[16px]">view_agenda</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Main 3-Column Poster Grid -->
+<div class="px-margin">
+<div class="grid grid-cols-3 gap-x-2.5 gap-y-3.5">
+<!-- Item 1: Oppenheimer -->
+<div class="group relative flex flex-col cursor-pointer transition-transform active:scale-95">
+<div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden bg-surface-container-high shadow-md shadow-black/40">
+<img class="w-full h-full object-cover" data-alt="Cinematic high contrast film poster of Oppenheimer standing in desert test site, warm golden fire explosion embers reflecting on his brimmed hat and coat, 35mm film grain, moody cinematic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMmXiu0os4Y0p_EJp3yiw3P0qb332zS2CZoqpxo4PIw0Drt7VZmfRbkOma2adgp5EcpdGc6OLQttBMFq8VD4pC416Z644Xzg_HqCpo1EUWmlFFiZHR7qn14jilNSnpuqo5fdp7RG7dKWnjrjLCzwUu8-8Bb4jEwk2hxlJ9mmIx9eu56rpb5t-5Pw5ZNBLtX4XJfj0PPLuTBTKugu6-9QhAgK9FRwKtj7Dyy7F-V6XHA9nAXYPSbbF2"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-transparent to-black/20"></div>
+<!-- Top Tag / Badge -->
+<div class="absolute top-1.5 right-1.5 flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-surface-container-lowest/80 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-data-mono text-primary text-[10px] font-bold">4.8</span>
+</div>
+<!-- Bottom Status Icons -->
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex items-center justify-between">
+<span class="w-5 h-5 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center text-primary" title="Watched">
+<span class="material-symbols-outlined text-[12px] font-bold">check</span>
+</span>
+<span class="w-5 h-5 rounded-full bg-surface-container-lowest/60 backdrop-blur-sm flex items-center justify-center text-secondary" title="Favorited">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</span>
+</div>
+</div>
+<div class="mt-1 px-0.5">
+<h3 class="font-label-sm text-label-sm text-on-surface font-semibold truncate leading-tight">Oppenheimer</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant/80 text-[10px]">2023 • 3h 0min</p>
+</div>
+</div>
+<!-- Item 2: Past Lives -->
+<div class="group relative flex flex-col cursor-pointer transition-transform active:scale-95">
+<div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden bg-surface-container-high shadow-md shadow-black/40">
+<img class="w-full h-full object-cover" data-alt="Tender romantic movie poster for Past Lives, two childhood friends leaning gently on a ferry railing overlooking Manhattan skyline in golden sunset, soft vintage film palette with gentle warm flares." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwOSH_A472l3JYkM32hHDcHhU5PqpU5gf6q-LmZNOJIVRTs-crAouOSEIp_MNDlve7YJTVIOCKnc-vXAsgVg9wsf16TtXzHmMKqihyf5af27njntaWUsHgrWdjYaLMpBBhbsVZ-LWVLI6F6Byhqiq9m5XOzNcZ0UimQrOYGTTtayRcpO03J0bxBcipkDC5lci1cd0AQ54fBxdAuaoDgYKC74ylzgGz_a1UIzfOBeplj7gX8UnJ_nde"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-transparent to-black/20"></div>
+<div class="absolute top-1.5 right-1.5 flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-surface-container-lowest/80 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-data-mono text-primary text-[10px] font-bold">4.5</span>
+</div>
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex items-center justify-between">
+<span class="w-5 h-5 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[12px] font-bold">check</span>
+</span>
+<span class="w-5 h-5 rounded-full bg-surface-container-lowest/60 backdrop-blur-sm flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</span>
+</div>
+</div>
+<div class="mt-1 px-0.5">
+<h3 class="font-label-sm text-label-sm text-on-surface font-semibold truncate leading-tight">Past Lives</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant/80 text-[10px]">2023 • 1h 45m</p>
+</div>
+</div>
+<!-- Item 3: Anatomy of a Fall -->
+<div class="group relative flex flex-col cursor-pointer transition-transform active:scale-95">
+<div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden bg-surface-container-high shadow-md shadow-black/40">
+<img class="w-full h-full object-cover" data-alt="Chilling courtroom drama poster for Anatomy of a Fall, French chalet snowy landscape with sharp contrast shadows, protagonist gazing intensely, minimalist dark Scandinavian aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmH3zoHTnpvqaDKcFlmDGYLIduBt1DFzCPg56hB9JfDncCg3ZZgWHTbaneOcQktShShllT2R5VMRctWPTwQMqKH85zaseWHu_iAILW_wals82OxvwWrdhiES3oinDzPU1eLsGsgAQCraDIXO2dGH5RtNSGv3HgMp78ovZTYWhwGoeLzh6tAh19ngvu-1c-zULB2zypQ27o5WGhO9v6VCXST5-YgXd5ct6FDIuWNP3bp5euLv4V8NTy"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-transparent to-black/20"></div>
+<div class="absolute top-1.5 right-1.5 flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-surface-container-lowest/80 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-data-mono text-primary text-[10px] font-bold">4.2</span>
+</div>
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex items-center justify-between">
+<span class="w-5 h-5 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[12px] font-bold">check</span>
+</span>
+</div>
+</div>
+<div class="mt-1 px-0.5">
+<h3 class="font-label-sm text-label-sm text-on-surface font-semibold truncate leading-tight">Anatomy of a Fall</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant/80 text-[10px]">2023 • 2h 31m</p>
+</div>
+</div>
+<!-- Item 4: Dune: Part Two -->
+<div class="group relative flex flex-col cursor-pointer transition-transform active:scale-95">
+<div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden bg-surface-container-high shadow-md shadow-black/40">
+<img class="w-full h-full object-cover" data-alt="Sci-fi epic movie poster for Dune Part Two, Paul Atreides and Chani silhouetted over immense orange Arrakis sand dunes under a giant burning twin sun, cinematic warm amber glow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-CyWHfnGwqaJwwmwjUWWpFA0Qyz1PxiPqvW7-sI_mESQTiMZNhgSB-I7_X7rGlveESQW2LKSd7K3k5Byc6MCwF2liiiQkag7SB3zsKodFMAXpF30aNRDDnCZy4EqRsg3dITLMJCCMgLZnjUf0Y1nzpWAKaaxxSriVPYGczO93Yik0WjTEv8s-JavyIpJdpC3G5eCe3LBic6-uz3vH7n_FeCPgrfWPscFpBTGbbdYt75cKMmBzqxei"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-transparent to-black/20"></div>
+<!-- Watchlist year badge -->
+<div class="absolute top-1.5 right-1.5 flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-primary-container text-on-primary-container shadow-sm">
+<span class="font-data-mono text-[9px] font-bold tracking-tight">2024</span>
+</div>
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm text-[9px] font-label-sm text-primary font-bold">
+              Watchlist
+            </span>
+<span class="w-5 h-5 rounded-full bg-surface-container-lowest/60 backdrop-blur-sm flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</span>
+</div>
+</div>
+<div class="mt-1 px-0.5">
+<h3 class="font-label-sm text-label-sm text-on-surface font-semibold truncate leading-tight">Dune: Part Two</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant/80 text-[10px]">2024 • 2h 46m</p>
+</div>
+</div>
+<!-- Item 5: The Holdovers -->
+<div class="group relative flex flex-col cursor-pointer transition-transform active:scale-95">
+<div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden bg-surface-container-high shadow-md shadow-black/40">
+<img class="w-full h-full object-cover" data-alt="Heartwarming winter drama film poster for The Holdovers, 1970s New England prep school library with retro amber wood tones, snowy window view, soft vintage film color treatment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-PXclYnJvdYDPEOS8PO4OZB0DP0WEhVOH8ZkkP26rm8qbusbVAzZf8o7xVuWBVQvjiBTaTHXNzLPqPz3OrTrRhMe1TrnTwqXq65tqOZ5vHT6IoNNAFAz72KZzQV88ab_u4Tr_oPWOT085znoafV5OQp28N46rboy1VPRJOBX-uhe9sLPefgR8dNEzLxcCVfrDpW-wBp2WsY7Sob6W-swkGpthiaITEQp7bPeAa7SNr_VbNpP_NW05"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-transparent to-black/20"></div>
+<div class="absolute top-1.5 right-1.5 flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-surface-container-lowest/80 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-data-mono text-primary text-[10px] font-bold">4.6</span>
+</div>
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex items-center justify-between">
+<span class="w-5 h-5 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[12px] font-bold">check</span>
+</span>
+</div>
+</div>
+<div class="mt-1 px-0.5">
+<h3 class="font-label-sm text-label-sm text-on-surface font-semibold truncate leading-tight">The Holdovers</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant/80 text-[10px]">2023 • 2h 13m</p>
+</div>
+</div>
+<!-- Item 6: Succession (Show) -->
+<div class="group relative flex flex-col cursor-pointer transition-transform active:scale-95">
+<div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden bg-surface-container-high shadow-md shadow-black/40">
+<img class="w-full h-full object-cover" data-alt="Prestige drama TV poster for Succession, modern billionaire Roy family gathered in luxury skyscraper boardroom overlooking Manhattan skyline, dark suits, ruthless tension, sharp cinematic shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOsuhAU-6-GcYBcYwh4JH-jLiiYLa0G5qTg6wUp-5yMq6SDR_CZkNgVEwRRAfR8mDDGOHWoYxppR0dmYMMoAXAuyGQDtfjDfLoIPKNXEJZ-4s2oqIo6Bm_eclNU_xiTaAkwxrjA2uDMLqp8GpKhJc2wdLYDUMCiGRBgcNZQZvK6nnsDN5IJpX6vu7hn5pUHEEvkNMg_qhl8Foae3c5vW7Qwa9vY6Qb8Xyf83Ia0f-9oHjffZ3D7rZk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-transparent to-black/20"></div>
+<div class="absolute top-1.5 right-1.5 flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-surface-container-lowest/80 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-data-mono text-primary text-[10px] font-bold">5.0</span>
+</div>
+<!-- Series Badge -->
+<div class="absolute top-1.5 left-1.5 px-1 py-0.5 rounded bg-surface-container-lowest/90 text-[8px] font-bold text-on-surface tracking-wider uppercase">
+            TV
+          </div>
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex items-center justify-between">
+<span class="w-5 h-5 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[12px] font-bold">check</span>
+</span>
+<span class="w-5 h-5 rounded-full bg-surface-container-lowest/60 backdrop-blur-sm flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</span>
+</div>
+</div>
+<div class="mt-1 px-0.5">
+<h3 class="font-label-sm text-label-sm text-on-surface font-semibold truncate leading-tight">Succession</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant/80 text-[10px]">S4 Complete • 39 eps</p>
+</div>
+</div>
+<!-- Item 7: Fleabag (Show) -->
+<div class="group relative flex flex-col cursor-pointer transition-transform active:scale-95">
+<div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden bg-surface-container-high shadow-md shadow-black/40">
+<img class="w-full h-full object-cover" data-alt="British comedy-drama series poster for Fleabag, woman with direct gaze breaking fourth wall with mascara-smudged eyes and wry smile, rainy London cafe background, moody dark palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIMNIPtTYdUlUofO5rBmN0K2I457So-Q4zpaGXGrJkb0z7EZcDOsZXvzDuZhmMY-y3ZIfClAAqrnPXwLLKXyr37WKvtroJLRgC2_-lTVlMcDuXS-zOgA71eSXwKtHTZ9yL4fyyRxWLeGBST1QfEyChbahxOPq9gOLY5adXJ9YilUouuBIF9qqUDKxoMR-ZoEQQ2FAVniHwOaxXcnzfsm_1FSC4OPADDKKUDJH9k-zIPax6oLvlqHr_"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-transparent to-black/20"></div>
+<div class="absolute top-1.5 right-1.5 flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-surface-container-lowest/80 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-data-mono text-primary text-[10px] font-bold">4.9</span>
+</div>
+<div class="absolute top-1.5 left-1.5 px-1 py-0.5 rounded bg-surface-container-lowest/90 text-[8px] font-bold text-on-surface tracking-wider uppercase">
+            TV
+          </div>
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex items-center justify-between">
+<span class="w-5 h-5 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[12px] font-bold">check</span>
+</span>
+<span class="w-5 h-5 rounded-full bg-surface-container-lowest/60 backdrop-blur-sm flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</span>
+</div>
+</div>
+<div class="mt-1 px-0.5">
+<h3 class="font-label-sm text-label-sm text-on-surface font-semibold truncate leading-tight">Fleabag</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant/80 text-[10px]">S2 Complete • 12 eps</p>
+</div>
+</div>
+<!-- Item 8: Everything Everywhere All at Once -->
+<div class="group relative flex flex-col cursor-pointer transition-transform active:scale-95">
+<div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden bg-surface-container-high shadow-md shadow-black/40">
+<img class="w-full h-full object-cover" data-alt="Multiverse fantasy movie poster for Everything Everywhere All at Once, laundromat owner surrounded by kaleidoscopic swirl of surreal objects, googly eye in third-eye position, vivid neon amber and deep cyan lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNidNmR76aDsL2IhOQWhgehQpepiuK1Qxj_KBUD2EYFfHQ4cE3kWVb6EuGQT3D3mg9GcnBCvBFAhpG2TiQ92pPvWZ7Fd3Lw5OAyLXWyAYlbNEAMZFYAax-sLG8OvmOzGVbpYD32MIaZpAF8UG2Bg9HlRDin3N2bZ8TdiHTVsxERiJgIrCZ_Afz4z9Y7sCSgZM_12k7q_xGkFQMueBcW8rSHEF-va9_lO0ys4TyBnftsgdZwj_3x2VP"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-transparent to-black/20"></div>
+<div class="absolute top-1.5 right-1.5 flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-surface-container-lowest/80 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-data-mono text-primary text-[10px] font-bold">4.7</span>
+</div>
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex items-center justify-between">
+<span class="w-5 h-5 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[12px] font-bold">check</span>
+</span>
+<span class="w-5 h-5 rounded-full bg-surface-container-lowest/60 backdrop-blur-sm flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</span>
+</div>
+</div>
+<div class="mt-1 px-0.5">
+<h3 class="font-label-sm text-label-sm text-on-surface font-semibold truncate leading-tight">EEAAO</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant/80 text-[10px]">2022 • 2h 19m</p>
+</div>
+</div>
+<!-- Item 9: Spider-Man: Across the Spider-Verse -->
+<div class="group relative flex flex-col cursor-pointer transition-transform active:scale-95">
+<div class="relative w-full aspect-[2/3] rounded-xl overflow-hidden bg-surface-container-high shadow-md shadow-black/40">
+<img class="w-full h-full object-cover" data-alt="Animated superhero movie poster Spider-Man Across the Spider-Verse, Miles Morales and Gwen Stacy falling upside down between neon comic book skyscrapers, saturated ink textures and warm golden chromatic aberration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKXT2IQOC69kciLkUd1LYwr7_T_9YcJkNdKZkDmrbAnDvzGJLEVCzPalxVrZSG9Uw79YkslENr7PAqF_aaYT3OuvqCa1E88jjloQMb0UhhGBEIygYVEohh3KUD_9G3KhT4ZvTrLyb0kCdpACyyj0S7GyKmePHZU_cKuCVsi7nfU4hBm0tjIuMOVbYxaFhh56__Cz5G70cflxvxIhjtsZuIZ6X8-QdWzrGUwhkXQZxR8ELEly4whrmq"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-transparent to-black/20"></div>
+<div class="absolute top-1.5 right-1.5 flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-surface-container-lowest/80 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-data-mono text-primary text-[10px] font-bold">4.9</span>
+</div>
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex items-center justify-between">
+<span class="w-5 h-5 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[12px] font-bold">check</span>
+</span>
+</div>
+</div>
+<div class="mt-1 px-0.5">
+<h3 class="font-label-sm text-label-sm text-on-surface font-semibold truncate leading-tight">Spider-Verse</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant/80 text-[10px]">2023 • 2h 20m</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Ambient Stats & Milestone Micro-Card -->
+<div class="px-margin mt-space-lg">
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-center justify-between shadow-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">movie_filter</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">2024 Cinema Log</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">74 films • 198 TV episodes</p>
+</div>
+</div>
+<div class="flex items-center">
+<span class="font-data-mono text-primary font-bold text-body-sm bg-primary/10 px-2.5 py-1 rounded-full">Top 4%</span>
+</div>
+</div>
+</div>
+<!-- Floating Quick Action Button: Add to List -->
+<div class="fixed bottom-20 right-margin z-40">
+<button class="flex items-center gap-2 pl-4 pr-5 py-3 rounded-full bg-primary-container text-on-primary-container font-label-lg text-label-lg font-bold shadow-[0_8px_24px_rgba(245,158,11,0.4)] active:scale-95 transition-transform" onclick="handleAddClick()">
+<span class="material-symbols-outlined text-[20px] font-bold">add</span>
+<span>Add to List</span>
+</button>
+</div>
+</div>
+<script>
+  function switchMainTab(element, tabName) {
+    const parent = element.parentElement;
+    const buttons = parent.querySelectorAll('button');
+    buttons.forEach(btn => {
+      btn.className = "px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1.5 whitespace-nowrap transition-all";
+      const dot = btn.querySelector('.animate-pulse');
+      if (dot) dot.remove();
+    });
+
+    element.className = "relative px-space-md py-space-xs rounded-full bg-surface-container text-on-surface font-label-md text-label-md flex items-center gap-1.5 whitespace-nowrap shadow-sm group transition-all";
+    
+    const dot = document.createElement('span');
+    dot.className = "w-1.5 h-1.5 rounded-full bg-primary animate-pulse";
+    element.insertBefore(dot, element.firstChild);
+  }
+
+  function handleAddClick() {
+    const btn = event.currentTarget;
+    btn.classList.add('scale-90');
+    setTimeout(() => btn.classList.remove('scale-90'), 150);
+  }
+
+  // Filter pills interactive toggle
+  document.querySelectorAll('[data-filter]').forEach(button => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('[data-filter]').forEach(b => {
+        b.className = "px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-all";
+      });
+      button.className = "px-3 py-1 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm shadow-[0_0_12px_rgba(245,158,11,0.25)] flex items-center gap-1 transition-all";
+    });
+  });
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_-2px_16px_rgba(0,0,0,0.7)]" data-active-classes="text-primary [filter:drop-shadow(0_0_8px_rgba(245,158,11,0.4))]"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[44px] text-on-surface-variant transition-colors group" data-path="discover" href="#"><span class="material-symbols-outlined text-[24px] mb-0.5">explore</span><span class="font-label-sm text-label-sm tracking-wide">Discover</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[44px] text-on-surface-variant transition-colors group relative" data-path="up-next" href="#"><div class="relative flex items-center justify-center"><span class="material-symbols-outlined text-[24px] mb-0.5">playlist_play</span><span class="absolute -top-1 -right-2 px-1 min-w-[15px] h-[15px] flex items-center justify-center rounded-full bg-primary-container text-on-primary-container font-label-sm text-[9px] font-bold leading-none">3</span></div><span class="font-label-sm text-label-sm tracking-wide">Up Next</span></a><a aria-current="page" class="flex flex-col items-center justify-center flex-1 h-full min-w-[44px] transition-colors group text-primary [filter:drop-shadow(0_0_8px_rgba(245,158,11,0.4))]" data-path="my-list" href="#"><span class="material-symbols-outlined text-[24px] mb-0.5">bookmarks</span><span class="font-label-sm text-label-sm tracking-wide">My List</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[44px] text-on-surface-variant transition-colors group" data-path="profile" href="#"><span class="material-symbols-outlined text-[24px] mb-0.5">account_circle</span><span class="font-label-sm text-label-sm tracking-wide">Profile</span></a></div></nav></body></html>

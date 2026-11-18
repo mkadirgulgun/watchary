@@ -1,0 +1,58 @@
+name: Web sitesini yayınla
+
+# main ya da master dalına her gönderimde siteyi derleyip GitHub Pages'e yükler.
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Web sürümünü derle
+        run: npx expo export -p web
+        env:
+          # Site kullanici.github.io/depo-adi altında yayınlanır
+          EXPO_BASE_URL: /${{ github.event.repository.name }}
+          EXPO_PUBLIC_TMDB_TOKEN: ${{ secrets.EXPO_PUBLIC_TMDB_TOKEN }}
+          EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL }}
+          EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
+
+      # Tek sayfalık uygulama: bilinmeyen adresler (örn. /depo/media/tv/1) de uygulamayı açsın.
+      - name: Sayfa yenilemeleri için yedek sayfa ekle
+        run: |
+          cp dist/index.html dist/404.html
+          touch dist/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

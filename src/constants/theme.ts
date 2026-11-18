@@ -1,65 +1,56 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://unistyl.es/), etc.
- */
+import { Platform } from "react-native";
 
-import '@/global.css';
+export const colors = {
+  background: "#090A0F",
+  surface: "#12131A",
+  surfaceHigh: "#1A1C24",
+  border: "#262934",
+  primary: "#F59E0B",
+  primaryLight: "#FBBF24",
+  primaryDeep: "#D97706",
+  primarySoft: "rgba(245, 158, 11, 0.12)",
+  text: "#F8FAFC",
+  textSecondary: "#94A3B8",
+  textTertiary: "#64748B",
+  onPrimary: "#090A0F",
+  danger: "#F87171",
+  success: "#4ADE80",
+  glass: "rgba(9, 10, 15, 0.85)",
+};
 
-import { Platform } from 'react-native';
+export const spacing = {
+  xs: 4,
+  sm: 8,
+  md: 12,
+  lg: 16,
+  xl: 24,
+  xxl: 32,
+};
 
-export const Colors = {
-  light: {
-    text: '#000000',
-    background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
-    textSecondary: '#60646C',
-  },
-  dark: {
-    text: '#ffffff',
-    background: '#000000',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA',
-  },
-} as const;
+export const radius = {
+  sm: 8,
+  md: 12,
+  lg: 16,
+  xl: 24,
+  full: 9999,
+};
 
-export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
+export const fonts = {
+  display: "PlusJakartaSans_700Bold",
+  displayExtra: "PlusJakartaSans_800ExtraBold",
+  displaySemi: "PlusJakartaSans_600SemiBold",
+  body: "Inter_400Regular",
+  bodyMedium: "Inter_500Medium",
+};
 
-export const Fonts = Platform.select({
-  ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
-    sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
-    serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
-    rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
-  },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
-  },
-  web: {
-    sans: 'var(--font-display)',
-    serif: 'var(--font-serif)',
-    rounded: 'var(--font-rounded)',
-    mono: 'var(--font-mono)',
-  },
-});
+export const glow = {
+  shadowColor: colors.primary,
+  shadowOpacity: 0.35,
+  shadowRadius: 16,
+  shadowOffset: { width: 0, height: 0 },
+  elevation: 6,
+};
 
-export const Spacing = {
-  half: 2,
-  one: 4,
-  two: 8,
-  three: 16,
-  four: 24,
-  five: 32,
-  six: 64,
-} as const;
-
-export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
-export const MaxContentWidth = 800;
+/** Web'de input odak halkasını gizler; mobilde etkisizdir. */
+export const noOutline: object =
+  Platform.OS === "web" ? { outlineStyle: "none" } : {};

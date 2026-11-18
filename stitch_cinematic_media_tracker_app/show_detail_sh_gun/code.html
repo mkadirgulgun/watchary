@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-low": "#1a1b22", "outline-variant": "#534434", "on-tertiary-container": "#6a3700", "surface-container-lowest": "#0d0e15", "error-container": "#93000a", "outline": "#a08e7a", "inverse-surface": "#e3e1ec", "primary-container": "#f59e0b", "surface-bright": "#383941", "on-error": "#690005", "primary": "#ffc174", "surface-dim": "#12131a", "secondary-fixed-dim": "#f9bd22", "on-surface-variant": "#d8c3ad", "surface-variant": "#34343c", "error": "#ffb4ab", "surface-tint": "#ffb95f", "inverse-primary": "#855300", "on-tertiary-fixed-variant": "#6e3900", "inverse-on-surface": "#2f3038", "on-surface": "#e3e1ec", "on-primary-fixed-variant": "#653e00", "on-primary-fixed": "#2a1700", "secondary-fixed": "#ffdf9f", "on-tertiary-fixed": "#2f1500", "tertiary": "#ffc08e", "background": "#12131a", "primary-fixed": "#ffddb8", "tertiary-container": "#ff9837", "surface-container-highest": "#34343c", "secondary": "#ffc640", "on-primary-container": "#613b00", "secondary-container": "#e3aa00", "on-background": "#e3e1ec", "surface": "#12131a", "tertiary-fixed": "#ffdcc3", "surface-container": "#1e1f26", "on-secondary": "#402d00", "on-secondary-container": "#5a4100", "on-primary": "#472a00", "primary-fixed-dim": "#ffb95f", "on-error-container": "#ffdad6", "tertiary-fixed-dim": "#ffb77d", "surface-container-high": "#292931", "on-secondary-fixed-variant": "#5c4300", "on-secondary-fixed": "#261a00", "on-tertiary": "#4d2600" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-md": "1.5rem", "space-xs": "0.25rem", "space-md": "0.75rem", "gutter-md": "1rem", "margin": "1rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-lg": "1.25rem", "gutter": "0.75rem" }, "fontFamily": { "body-lg": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "display-lg": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "label-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "display-lg-mobile": ["Plus Jakarta Sans"], "data-mono": ["Inter"], "body-md": ["Inter"] }, "fontSize": { "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-lg-mobile": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-sm": ["16px", { "lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }], "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.06em", "fontWeight": "700" }], "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "display-lg-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.025em", "fontWeight": "800" }], "data-mono": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.5)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="CineTrack Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UmkODMW3yZYUjFWc5njAjQ28Nlt3TMQygp8XdAl2Muu02M66Clw4GojgxOEpXd_v5jAvYjK5POhSgr3dYCSWY7bSvJQXQlPPx3Qvpek6q1_lsoebRw9uGqa7cy5EWOxTAs3JtqxLlBuX0QQ_GCsLuYzPXa1uylIM0CWtDK85EpWMrYDh0PeI1xFNttq5cS3vQwsPy0z95M5nCqfy7wwpXtQw0WCfKUIJawJJOwXMM46c4DIoKk355IAxc"/><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold">CineTrack</span></div><div class="flex items-center gap-space-xs"><button aria-label="Search" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[22px]">search</span></button><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary relative transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary-container ring-2 ring-surface-container-lowest"></span></button><div class="ml-space-xs flex items-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjLKebsX0bFldBf8CQ5zOPOBRDtBKT_LN1V7JlEb0UmpLZvC2MtPkuPXEHArbPL75SZRH3_5BQs6XLxMyTEbVtT2M6FUqgEy1r-sCv4rHJ11DPP3oWyDOZATx8rJq--HHgvHqmVEDYlDGkNM3Rv1BaLoddGZ6rcjQrA6A8fYfVxONnOXsgr7bnGVp5sZM8nYM3yKxMmym41T6yqn7EIUhMfKJWUu7Tb4iVsRx_Shm_A53x_FDycywC"/></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full text-on-surface">
+<!-- Top Floating Utility Bar -->
+<div class="px-margin pt-space-xs pb-space-xs flex items-center justify-between z-20">
+<button aria-label="Go Back" class="w-10 h-10 rounded-full bg-surface-container-lowest/70 backdrop-blur-md flex items-center justify-center text-on-surface shadow-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">arrow_back_ios_new</span>
+</button>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Share" class="w-10 h-10 rounded-full bg-surface-container-lowest/70 backdrop-blur-md flex items-center justify-center text-on-surface shadow-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+<button aria-label="Bookmark" class="w-10 h-10 rounded-full bg-surface-container-lowest/70 backdrop-blur-md flex items-center justify-center text-primary shadow-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+<button aria-label="Options" class="w-10 h-10 rounded-full bg-surface-container-lowest/70 backdrop-blur-md flex items-center justify-center text-on-surface shadow-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Hero Visual Area with Cinematic Scrim -->
+<div class="relative w-full h-80 overflow-hidden shadow-2xl">
+<div class="w-full h-full bg-cover bg-center scale-105 transform hover:scale-100 transition-transform duration-700" data-alt="Cinematic still from Shōgun 2024 showing Lord Toranaga in ornate gold and black samurai armor gazing toward a stormy Edo bay filled with wooden ships at dawn. Golden warm sunlight piercing through dark ink clouds, ultra photorealistic, epic film lighting, rich shadows." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCxHFHRli1VIW47uwuv5s74QuzThVo6dH0SXuPrDGOAnBQdci5ndm7lLCttRDiPRQ1WF9wq1yCxU1YJdInnmeqxe8axL_oXfgc4NMuxyM1swAc9XIN8U6H_koZwaUhIVvttdgLJbhmBWBCXGPneN_vwVzzJ4SZ3o5mqa__HDIFG-wQ-ywaMYqRX7-yQb4QOUQHVH6gn5hhTcO9u6vK32z_44xGAIUmOLZ0t5L8t8b0MibMBH3fbWAlo')">
+</div>
+<!-- Scrim layers for seamless text read & OLED depth -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-lowest/60 via-transparent to-transparent"></div>
+<!-- Live Trailer Cue Button -->
+<div class="absolute bottom-6 right-margin z-10">
+<button class="px-space-md py-1.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-primary font-label-md text-label-md flex items-center gap-1.5 shadow-lg active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span>Trailer 4K</span>
+</button>
+</div>
+</div>
+<!-- Show Meta & Overlapping Poster Row -->
+<div class="px-margin relative -mt-20 z-10 flex flex-col gap-space-md">
+<div class="flex gap-space-md items-end">
+<!-- 2:3 Standard CineTrack Poster with Amber Luminescence -->
+<div class="relative w-28 h-42 flex-shrink-0 rounded-xl overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.8)] shadow-primary-container/10">
+<img class="w-full h-full object-cover rounded-xl" data-alt="Official vertical key art poster for Shōgun limited series. Intricate gold lacquer Japanese calligraphy motif over an ominous obsidian samurai helmet silhouette. Dramatic amber rim lighting, dark cinematic typography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD85kL_En-I3lhTKTP8y53CQvSGS31tDIflGwjXYPVByvU_J0aF_R2e8I44dB1UynEC3DT-HV8ZuG3iqQ36-l77ifM4K83bmXdiryxA1LcALFYO62NuuTnZqu7_NSSM90hE23l8zJRhGstMncxKGhM4K7BCijH0ryMOnHnivCHa7o-hyv4a2gVFStfLtmrTLgTcq6XwA5drJQ0K-lxX1STqlV1PVAAFbbD3OQFlZO5HtLygHpG52OSD"/>
+<div class="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded-md bg-surface-container-lowest/90 backdrop-blur-sm text-primary font-label-sm text-label-sm flex items-center gap-0.5 shadow">
+<span class="material-symbols-outlined text-[11px]" style="font-variation-settings: 'FILL' 1;">hd</span>
+<span>4K</span>
+</div>
+</div>
+<!-- Quick Badges & Show Details -->
+<div class="flex-1 min-w-0 pb-1">
+<div class="flex flex-wrap items-center gap-1.5 mb-1.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">2024</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">TV-MA</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm">Limited Series</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-extrabold tracking-tight truncate leading-tight">Shōgun</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 truncate">Historical Drama • Action • Political Intrigue</p>
+</div>
+</div>
+<!-- Triple Metric Rating Rail -->
+<div class="grid grid-cols-3 gap-space-xs p-space-sm rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex flex-col items-center justify-center py-1">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-headline-sm text-headline-sm font-bold">4.8</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Letterboxd (280k)</span>
+</div>
+<div class="flex flex-col items-center justify-center py-1">
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">thumb_up</span>
+<span class="font-headline-sm text-headline-sm font-bold">96%</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">TV Time Match</span>
+</div>
+<div class="flex flex-col items-center justify-center py-1">
+<div class="flex items-center gap-1 text-primary-fixed">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">hotel_class</span>
+<span class="font-headline-sm text-headline-sm font-bold">8.9</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">IMDb Global</span>
+</div>
+</div>
+</div>
+<!-- Primary Cinephile Actions -->
+<div class="px-margin mt-space-md flex flex-col gap-space-sm">
+<!-- Log & Watch Action Buttons -->
+<div class="grid grid-cols-4 gap-space-xs">
+<button class="col-span-2 py-3 px-space-md rounded-xl bg-primary-container text-on-primary-container font-label-lg text-label-lg flex items-center justify-center gap-2 shadow-[0_0_16px_rgba(245,158,11,0.25)] active:scale-98 transition-transform font-bold">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Watched</span>
+</button>
+<button class="py-3 px-space-xs rounded-xl bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center gap-1.5 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">bookmark_add</span>
+<span>List</span>
+</button>
+<button class="py-3 px-space-xs rounded-xl bg-surface-container text-primary font-label-md text-label-md flex items-center justify-center gap-1.5 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span>9.2k</span>
+</button>
+</div>
+<!-- Tactile Interactive Half-Star Rater Card -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-xs shadow-inner">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase">Your Rating</span>
+<button class="font-label-sm text-label-sm text-primary flex items-center gap-1 active:opacity-80">
+<span>Write Diary Entry</span>
+<span class="material-symbols-outlined text-[14px]">edit_note</span>
+</button>
+</div>
+<div class="flex items-center justify-between pt-1">
+<!-- Interactive 5-Star Row (Set to 4.5 Stars) -->
+<div class="flex items-center gap-2 text-primary" id="star-rater-row">
+<button class="focus:outline-none"><span class="material-symbols-outlined text-[26px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button class="focus:outline-none"><span class="material-symbols-outlined text-[26px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button class="focus:outline-none"><span class="material-symbols-outlined text-[26px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button class="focus:outline-none"><span class="material-symbols-outlined text-[26px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button class="focus:outline-none"><span class="material-symbols-outlined text-[26px]" style="font-variation-settings: 'FILL' 1;">star_half</span></button>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container-high text-primary font-data-mono text-data-mono">
+<span class="font-bold">4.5</span>
+<span class="text-on-surface-variant font-normal">/ 5.0</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Synopsis & Expandable Prose -->
+<div class="px-margin mt-space-lg flex flex-col gap-1.5">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Synopsis</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed line-clamp-3" id="synopsis-content">
+      When a mysterious European ship is found marooned in a nearby fishing village in feudal Japan, Lord Yoshii Toranaga discovers secrets that could tip the scales of power and devastate his formidable enemies. English pilot John Blackthorne arrives carrying knowledge of foreign empires, intertwining his destiny with the enigmatic translator Lady Mariko.
+    </p>
+<button class="self-start text-primary font-label-md text-label-md hover:underline flex items-center gap-0.5 mt-0.5" id="synopsis-toggle">
+<span>Read more</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+<!-- Streaming Availability Providers -->
+<div class="px-margin mt-space-lg flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm tracking-wider uppercase text-on-surface-variant">Where to Stream</span>
+<span class="font-label-sm text-label-sm text-primary">All 10 Episodes in 4K HDR</span>
+</div>
+<div class="grid grid-cols-3 gap-space-xs">
+<div class="p-2.5 rounded-xl bg-surface-container-low flex flex-col items-center text-center gap-1 shadow-sm">
+<span class="font-headline-sm text-headline-sm font-black tracking-tighter text-on-surface">Hulu</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-primary font-label-sm text-[9px] uppercase font-bold">Subscription</span>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-low flex flex-col items-center text-center gap-1 shadow-sm">
+<span class="font-headline-sm text-headline-sm font-black tracking-widest text-on-surface">FX</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-on-surface-variant font-label-sm text-[9px] uppercase font-bold">Cable / App</span>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-low flex flex-col items-center text-center gap-1 shadow-sm">
+<span class="font-headline-sm text-headline-sm font-black tracking-tighter text-on-surface">Disney+</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-highest text-primary font-label-sm text-[9px] uppercase font-bold">Star Hub</span>
+</div>
+</div>
+</div>
+<!-- Cast & Crew Horizontal Tray -->
+<div class="mt-space-lg flex flex-col gap-space-sm">
+<div class="px-margin flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Top Billed Cast</h2>
+<a class="font-label-sm text-label-sm text-primary hover:underline" href="#">Full Crew (42)</a>
+</div>
+<!-- Scrolling Avatars Track -->
+<div class="flex overflow-x-auto px-margin gap-space-md pb-2 no-scrollbar">
+<!-- Actor 1 -->
+<div class="flex flex-col items-center w-20 flex-shrink-0 text-center">
+<div class="w-18 h-18 rounded-full overflow-hidden shadow-md mb-2 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of actor Hiroyuki Sanada, renowned Japanese screen star, looking dignified with salt and pepper beard and intense focused gaze." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASth5s9979mXcLV38G4OVOv5YTzhfKohpoRqU7Z3W60bz8XsYc_2d9Fi2Bq2A3KVHRftH_VM9x2LkdQlaZm5Ji78AeL-Zxo0_Xtglr8cHa_rho7UFpKy0ds3jPH9QETS5MAgQY0kcpnjb54f_uSFiUrSXfsQsaenOjUQ9Vj0gzMwhQ9kpz96DKpfrPSlDBtM_24lzO-3GSCU7kZX55_WkHh35-IU9hw4RiNuVl5T2AYJAlAFBuxddb"/>
+</div>
+<span class="font-label-md text-label-md font-semibold text-on-surface truncate w-full">Hiroyuki Sanada</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant truncate w-full">Lord Toranaga</span>
+</div>
+<!-- Actor 2 -->
+<div class="flex flex-col items-center w-20 flex-shrink-0 text-center">
+<div class="w-18 h-18 rounded-full overflow-hidden shadow-md mb-2 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of British actor Cosmo Jarvis, dressed in contemporary attire with tousled dark hair and expressive cinematic eyes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD_YnHuNRQduk6Mvsu0TDzzzo0yPGg1SVbG8y3y_Oii3IB8l-Hi-FgHPvCO91vDcf8ox-z7h8gFFGmT15ZNEBeDeNOQsVnjgthGz2BaOOIQKqotuc0RN5Wz0UikW9pqOw0VNEqBpT6i8tXuq94bSb5r5-YwpaU51jKJaCY6JB2GZLmwRvJt3ZfYwOGoWxELUjCelg9BFdTe2VwkJpWQVcT5W1bu-4YNqlAgCKWnp9YGds9y-542bPv"/>
+</div>
+<span class="font-label-md text-label-md font-semibold text-on-surface truncate w-full">Cosmo Jarvis</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant truncate w-full">John Blackthorne</span>
+</div>
+<!-- Actor 3 -->
+<div class="flex flex-col items-center w-20 flex-shrink-0 text-center">
+<div class="w-18 h-18 rounded-full overflow-hidden shadow-md mb-2 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of actress Anna Sawai with elegant subtle makeup and serene composed expression, warm cinematic portrait lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrGqV5hWe6JvH8OOg28TyohD8aijToC6fnzArBME5vVpA5HKkXb9966x91sji7XLMPtJMoo4ejjEN5oobuujD357bQXO_M9pNuTTWuYonS_z7viLaokegx8xPLDLakreqWBMJ8d11_4cLpHjkLwG29GjTd5kz24UjQ26yL3aFj9SF_Fr0ayHYzfQdDWfUF8H2JZ1UzOHP0RiGL3aOVFFwRokh3_sPJtujUAqzdQRF8t57HYqlAO0h5"/>
+</div>
+<span class="font-label-md text-label-md font-semibold text-on-surface truncate w-full">Anna Sawai</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant truncate w-full">Lady Toda Mariko</span>
+</div>
+<!-- Actor 4 -->
+<div class="flex flex-col items-center w-20 flex-shrink-0 text-center">
+<div class="w-18 h-18 rounded-full overflow-hidden shadow-md mb-2 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of actor Tadanobu Asano with playful charismatic smile, contemporary sharp headshot lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApQNLV9BB88zJB2ZE51hcMBKp7nY4trQZUVa6xanTnDnFfgbXZ6itOzZOfXPPo3sBe47IParKo5yNNVwZ3xpdYGXZ5Ur5IYnJsCyYOVFqxcV8imQnvHgnpohO8KTAYFeDnPXHHihSN3eYw411uBfRW29k5xO1a2bj1jU032ejuwmIYoVFXZgmu4l0n-9utv3XN5ZMbbNEb_Uw5z4Hm-8ckcdbaMYnHjR3wuo2wTzqFfpAoPn1wquxN"/>
+</div>
+<span class="font-label-md text-label-md font-semibold text-on-surface truncate w-full">Tadanobu Asano</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant truncate w-full">Kashigi Yabushige</span>
+</div>
+<!-- Actor 5 -->
+<div class="flex flex-col items-center w-20 flex-shrink-0 text-center">
+<div class="w-18 h-18 rounded-full overflow-hidden shadow-md mb-2 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Portrait of actor Takehiro Hira with intense commanding screen presence, moody studio portrait lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHXM9M_cS0OjhtZVP4UT6M-hShR6BWlUrLz7Dlh9Zi4jV-eoj9Anu8YuHBzKrXTQYV5wtxSGl-zc6gvwL6LGHFWqw-6XfscScqgfeX0U9A_fV_2FHXNjPvYKmMt3JsrskrS6gp0-XuIW4enctTzhTifDa7oFeJlnw4W78NnYhkkwBVsO3oYHbPqw82ARUJ_PhWR7ic3dZE7BGvcpYmmP4ogW5gbt1J8zqkDSjiAk3SGtTcS2dQC8-4"/>
+</div>
+<span class="font-label-md text-label-md font-semibold text-on-surface truncate w-full">Takehiro Hira</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant truncate w-full">Ishido Kazunari</span>
+</div>
+</div>
+</div>
+<!-- Episodic TV Tracking Section -->
+<div class="px-margin mt-space-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Episode Guide</h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm">Season 1</span>
+</div>
+<button class="font-label-sm text-label-sm text-primary flex items-center gap-0.5">
+<span>Batch Log</span>
+<span class="material-symbols-outlined text-[16px]">done_all</span>
+</button>
+</div>
+<!-- Season Progress Bar -->
+<div class="p-space-sm rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface">8 of 10 episodes watched</span>
+<span class="text-primary font-bold">80%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 80%;"></div>
+</div>
+</div>
+<!-- Episode Cards Stack -->
+<div class="flex flex-col gap-space-sm">
+<!-- Episode 8: Watched State -->
+<div class="p-space-sm rounded-xl bg-surface-container-low flex gap-space-sm items-center shadow-sm">
+<div class="relative w-24 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover opacity-60" data-alt="Cinematic 16:9 still from episode 8 showing ancient tea ceremony chamber in Osaka Castle with solemn advisors seated in low candlelight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtlfQsVSEkQxywABQKpKiZsa5Yr0ooBrprwN5mFo7Tu62Y38VrMiqHy7xlmiYthLsmlJL87TuiunMvlIDAdiJAX5LPPkOwvwY1bc6uU0srfmlb2QBTZ5vx71hhXdfDvymuHt2IvHSC4Eo4WtTtAjR21LDx9s1ccxyJNgEykB6UHzO92hKV5b-RKr1OlwhHt02sTjegwpGIUGjLhR2Wc01EFWD2dBfwhOgWl9pFQsFVVj15VoUZT1Q2"/>
+<div class="absolute inset-0 bg-surface-container-lowest/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="absolute bottom-1 right-1 px-1 rounded bg-surface-container-lowest/80 text-[9px] font-data-mono font-medium text-on-surface">62m</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span>S1 • E8</span>
+<span>•</span>
+<span>Apr 9</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate mt-0.5">The Abyss of Life</h3>
+<p class="font-body-sm text-[11px] text-on-surface-variant line-clamp-1 mt-0.5">Toranaga faces total defeat as his family confronts devastating sacrifices.</p>
+</div>
+<button aria-label="Mark unwatched" class="w-10 h-10 rounded-full flex items-center justify-center text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+</div>
+<!-- Episode 9: Next Up (Highlighted Focus State) -->
+<div class="p-space-sm rounded-xl bg-surface-container flex flex-col gap-space-sm shadow-[0_4px_20px_rgba(245,158,11,0.15)] relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-0.5 bg-primary-container"></div>
+<div class="flex gap-space-sm items-center">
+<div class="relative w-24 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Dramatic 16:9 episode still showing Lady Mariko standing resolute before armed samurai guards under red paper lanterns in Osaka palace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZOhuI_X6OyUh4MW5-pKu6hKWcRDBK0wWVkItWOz1rN181R9pdOIuEGUb67LIvbYY3UdRMahHhyRPFg2OuYszi9TaKDULOrOxb7Yuy6TNxMPsj8Tsl1p0g3sPOvdHMM8aufx0wGwwjLOI1D3Z9C4aixTla_DRGKDwio4zAlL_D5Q_jaNJw799pOycW2uUzQAjo_K35UqEEVnphmoULx3GZrfWoNv4DVIJSnd_pbEpLmlBUsbJUcqjg"/>
+<div class="absolute inset-0 bg-primary-container/10"></div>
+<span class="absolute bottom-1 right-1 px-1 rounded bg-surface-container-lowest/80 text-[9px] font-data-mono font-medium text-primary">58m</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-primary font-bold">
+<span>NEXT UP • S1 • E9</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate font-bold mt-0.5">Crimson Sky</h3>
+<p class="font-body-sm text-[11px] text-on-surface-variant line-clamp-1 mt-0.5">Mariko enters the lion's den in Osaka; Toranaga's clandestine plot culminates.</p>
+</div>
+</div>
+<!-- Quick Action Trigger for Next Episode -->
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Aired Apr 16, 2024</span>
+<button class="px-space-md py-1.5 rounded-lg bg-primary-container text-on-primary-container font-label-sm text-label-sm font-bold flex items-center gap-1.5 shadow-[0_0_12px_rgba(245,158,11,0.3)] active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span>Mark Watched</span>
+</button>
+</div>
+</div>
+<!-- Episode 10: Unwatched Season Finale -->
+<div class="p-space-sm rounded-xl bg-surface-container-low flex gap-space-sm items-center opacity-80 shadow-sm">
+<div class="relative w-24 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Cinematic mystery still for series finale showing quiet mist rolling over battle banners on the hills of Sekigahara at twilight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6IhaI_sinC6eOgGhnQGSAqgAJOIH-IK83JMCWMvtuw5gzES2i1J8F0Ba17KK1wT4tC6FEwdidzxiWP7wiPkwG6KqwEo0yWpylUhHUuYhGxO3dCZRIDX5A9DpbY1MU0i0o_4suwg7phrKq4JPRqrcco4RO2rc41zcbkAJfSwg1fsUJXydauJdHc0Gd6IFQQUGbAkr7GlEIEQOf9mCT8uiLDhSsW73_iZ-A_9KO7aIxEyv-j3Wce3r1"/>
+<span class="absolute bottom-1 right-1 px-1 rounded bg-surface-container-lowest/80 text-[9px] font-data-mono font-medium text-on-surface">64m</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span>FINALE • S1 • E10</span>
+<span>•</span>
+<span>Apr 23</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate mt-0.5">A Dream of a Dream</h3>
+<p class="font-body-sm text-[11px] text-on-surface-variant line-clamp-1 mt-0.5">In the wake of a tragic loss, Toranaga shapes the fate of a new empire.</p>
+</div>
+<button aria-label="Mark as watched" class="w-10 h-10 rounded-full flex items-center justify-center text-outline active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[24px]">radio_button_unchecked</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Community Reviews & Cinephile Diary -->
+<div class="px-margin mt-space-xl pb-6 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Community Reviews</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant">1,420 logs this week</span>
+</div>
+<!-- Spoiler Shield Filter Toggle -->
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hide Spoilers</span>
+<button aria-checked="true" class="w-11 h-6 rounded-full bg-primary-container p-0.5 flex items-center transition-colors" id="spoiler-toggle-btn" role="switch">
+<div class="w-5 h-5 rounded-full bg-surface-container-lowest translate-x-5 transition-transform"></div>
+</button>
+</div>
+</div>
+<!-- Review Card 1 (Top Cinephile / Verified Watcher) -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Avatar portrait of an enthusiastic movie reviewer with glasses and warm smile in a home cinema setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2MoWW3fUihtpG2ZDtbKQicdFXSEIk7jMKffAaOyllAEMAZZNveE10WgMCVgJ9psiEn3YZxSgjUDOV8BQL1aMBhqnnmuyBc8a6EIOCC4maFSyCw2qgHXg0EB4B4LM9yunjE0BW_JVbBFibvJL-WSUm9P6jyk79M9h7yHLpYyrXoJCZ6a23fEiaoRCouqvCpJeuYxXROVzkvqDubxz9dibc4JwSKlAOFZkPTK7x-WYqZweVZpd5SEnj"/>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-bold text-on-surface">Elena Rostova</span>
+<span class="px-1.5 py-0.2 rounded bg-primary-container/20 text-primary font-label-sm text-[9px]">PRO</span>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Watched via Hulu 4K • Apr 18</span>
+</div>
+</div>
+<!-- 5-Star Indicator -->
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+        The absolute pinnacle of prestigious historical storytelling. Hiroyuki Sanada commands every single second without ever raising his voice. Anna Sawai delivers a masterclass in controlled grief and quiet defiance. Television has not operated at this visual fidelity since early Game of Thrones.
+      </p>
+<div class="flex items-center justify-between pt-1 text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span>482</span>
+</button>
+<button class="flex items-center gap-1 hover:text-on-surface">
+<span class="material-symbols-outlined text-[16px]">chat_bubble_outline</span>
+<span>34 replies</span>
+</button>
+</div>
+<button class="hover:text-primary">
+<span class="material-symbols-outlined text-[16px]">bookmark_border</span>
+</button>
+</div>
+</div>
+<!-- Review Card 2 (Spoiler Shield State) -->
+<div class="relative p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm shadow-sm overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Avatar portrait of a young male film student wearing headphones against moody studio neon lights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoNoDsaRpsbjges8Vd5dAl31cMGot6fJOM5nE2Pnuugmuh42vir56q8VQKRr2tKPhhGE5E7o2QbaC3TuHaVOhEPedLZ8uUAvvhUV8nPw4LIC6ff3d7DyM-q7_5y8_YB6c4rsD0P3J1XT5_UZJmvGWbaPRl9A6CeZnpmlwzx8fVBGPnFodAafX1YqQ9AHGRaX_Gk9l4Vaz24wve5JSIhfPEf2C5IzUG-PkaeYJJ6a6HuvGe0OQ9VFV-"/>
+</div>
+<div>
+<span class="font-label-md text-label-md font-bold text-on-surface">Marcus Vance</span>
+<span class="block font-body-sm text-[11px] text-on-surface-variant">Episode 9 Reaction • Apr 17</span>
+</div>
+</div>
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+</div>
+<!-- Spoiler Content Container -->
+<div class="relative min-h-[72px] flex items-center justify-center">
+<!-- Blurred dummy text behind -->
+<p class="font-body-md text-body-md text-on-surface select-none filter blur-md opacity-40">
+          The ending sequence with Mariko at the warehouse door shattered me. Ishido's reaction when the shinobi explosives went off reveals Toranaga planned this sacrifice from the first episode.
+        </p>
+<!-- Tap to Reveal Spoiler Glass Overlay -->
+<button class="absolute inset-0 rounded-lg bg-surface-container/85 backdrop-blur-md flex flex-col items-center justify-center gap-1 text-primary active:bg-surface-container transition-colors" id="reveal-spoiler-btn">
+<div class="flex items-center gap-1.5 font-label-md text-label-md font-bold">
+<span class="material-symbols-outlined text-[18px]">visibility_off</span>
+<span>Contains Episode 9 Spoilers</span>
+</div>
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-wider">Tap to reveal review</span>
+</button>
+</div>
+<div class="flex items-center justify-between pt-1 text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">favorite_border</span>
+<span>129</span>
+</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">chat_bubble_outline</span>
+<span>12 replies</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Persistent Floating Log & Write Action -->
+<div class="pt-2 flex justify-center">
+<button class="w-full py-3.5 px-margin rounded-xl bg-surface-container text-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-lg active:scale-98 transition-transform">
+<span class="material-symbols-outlined text-[20px]">rate_review</span>
+<span>Write a CineTrack Review</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  // Synopsis Expand/Collapse
+  const synopsisToggle = document.getElementById('synopsis-toggle');
+  const synopsisContent = document.getElementById('synopsis-content');
+  if (synopsisToggle && synopsisContent) {
+    let expanded = false;
+    synopsisToggle.addEventListener('click', () => {
+      expanded = !expanded;
+      if (expanded) {
+        synopsisContent.classList.remove('line-clamp-3');
+        synopsisToggle.innerHTML = '<span>Show less</span><span class="material-symbols-outlined text-[16px]">expand_less</span>';
+      } else {
+        synopsisContent.classList.add('line-clamp-3');
+        synopsisToggle.innerHTML = '<span>Read more</span><span class="material-symbols-outlined text-[16px]">expand_more</span>';
+      }
+    });
+  }
+
+  // Interactive Spoiler Shield Reveal
+  const revealSpoilerBtn = document.getElementById('reveal-spoiler-btn');
+  if (revealSpoilerBtn) {
+    revealSpoilerBtn.addEventListener('click', () => {
+      revealSpoilerBtn.parentElement.querySelector('p').classList.remove('blur-md', 'opacity-40');
+      revealSpoilerBtn.remove();
+    });
+  }
+
+  // Spoiler Filter Switch Toggle
+  const spoilerToggleBtn = document.getElementById('spoiler-toggle-btn');
+  if (spoilerToggleBtn) {
+    let enabled = true;
+    spoilerToggleBtn.addEventListener('click', () => {
+      enabled = !enabled;
+      spoilerToggleBtn.setAttribute('aria-checked', String(enabled));
+      const knob = spoilerToggleBtn.firstElementChild;
+      if (enabled) {
+        spoilerToggleBtn.classList.remove('bg-surface-container-highest');
+        spoilerToggleBtn.classList.add('bg-primary-container');
+        knob.classList.remove('translate-x-0');
+        knob.classList.add('translate-x-5');
+      } else {
+        spoilerToggleBtn.classList.remove('bg-primary-container');
+        spoilerToggleBtn.classList.add('bg-surface-container-highest');
+        knob.classList.remove('translate-x-5');
+        knob.classList.add('translate-x-0');
+      }
+    });
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_-2px_16px_rgba(0,0,0,0.7)]" data-active-classes="text-primary [filter:drop-shadow(0_0_8px_rgba(245,158,11,0.4))]"><div class="flex justify-around items-center h-16 px-space-xs"><a aria-current="page" class="flex flex-col items-center justify-center flex-1 h-full min-w-[44px] transition-colors group relative text-primary [filter:drop-shadow(0_0_8px_rgba(245,158,11,0.4))]" data-path="discover" href="#"><span class="material-symbols-outlined text-[24px] mb-0.5">explore</span><span class="font-label-sm text-label-sm tracking-wide">Discover</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[44px] text-on-surface-variant transition-colors group relative" data-path="up-next" href="#"><div class="relative flex items-center justify-center"><span class="material-symbols-outlined text-[24px] mb-0.5">playlist_play</span><span class="absolute -top-1 -right-2 px-1 min-w-[15px] h-[15px] flex items-center justify-center rounded-full bg-primary-container text-on-primary-container font-label-sm text-[9px] font-bold leading-none">3</span></div><span class="font-label-sm text-label-sm tracking-wide">Up Next</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[44px] text-on-surface-variant transition-colors group" data-path="my-list" href="#"><span class="material-symbols-outlined text-[24px] mb-0.5">bookmarks</span><span class="font-label-sm text-label-sm tracking-wide">My List</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-[44px] text-on-surface-variant transition-colors group" data-path="profile" href="#"><span class="material-symbols-outlined text-[24px] mb-0.5">account_circle</span><span class="font-label-sm text-label-sm tracking-wide">Profile</span></a></div></nav></body></html>

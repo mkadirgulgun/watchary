@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-low": "#1a1b22", "outline-variant": "#534434", "on-tertiary-container": "#6a3700", "surface-container-lowest": "#0d0e15", "error-container": "#93000a", "outline": "#a08e7a", "inverse-surface": "#e3e1ec", "primary-container": "#f59e0b", "surface-bright": "#383941", "on-error": "#690005", "primary": "#ffc174", "surface-dim": "#12131a", "secondary-fixed-dim": "#f9bd22", "on-surface-variant": "#d8c3ad", "surface-variant": "#34343c", "error": "#ffb4ab", "surface-tint": "#ffb95f", "inverse-primary": "#855300", "on-tertiary-fixed-variant": "#6e3900", "inverse-on-surface": "#2f3038", "on-surface": "#e3e1ec", "on-primary-fixed-variant": "#653e00", "on-primary-fixed": "#2a1700", "secondary-fixed": "#ffdf9f", "on-tertiary-fixed": "#2f1500", "tertiary": "#ffc08e", "background": "#12131a", "primary-fixed": "#ffddb8", "tertiary-container": "#ff9837", "surface-container-highest": "#34343c", "secondary": "#ffc640", "on-primary-container": "#613b00", "secondary-container": "#e3aa00", "on-background": "#e3e1ec", "surface": "#12131a", "tertiary-fixed": "#ffdcc3", "surface-container": "#1e1f26", "on-secondary": "#402d00", "on-secondary-container": "#5a4100", "on-primary": "#472a00", "primary-fixed-dim": "#ffb95f", "on-error-container": "#ffdad6", "tertiary-fixed-dim": "#ffb77d", "surface-container-high": "#292931", "on-secondary-fixed-variant": "#5c4300", "on-secondary-fixed": "#261a00", "on-tertiary": "#4d2600" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-md": "1.5rem", "space-xs": "0.25rem", "space-md": "0.75rem", "gutter-md": "1rem", "margin": "1rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-lg": "1.25rem", "gutter": "0.75rem" }, "fontFamily": { "body-lg": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "display-lg": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "label-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "display-lg-mobile": ["Plus Jakarta Sans"], "data-mono": ["Inter"], "body-md": ["Inter"] }, "fontSize": { "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-lg-mobile": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-sm": ["16px", { "lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }], "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.06em", "fontWeight": "700" }], "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "display-lg-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.025em", "fontWeight": "800" }], "data-mono": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }] } } } };</script><style>body { min-height: max(884px, 100dvh); }</style></head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.5)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="Go back" class="w-11 h-11 -ml-2 flex items-center justify-center rounded-full text-on-surface hover:text-primary transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight truncate max-w-[210px]">Custom Curated List Detail</h1></div><div class="flex items-center gap-space-xs"><button aria-label="Share" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[22px]">share</span></button><button aria-label="More options" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[22px]">more_vert</span></button></div></div></header><main class="flex flex-col relative w-full pt-16 pb-safe bg-surface min-h-screen"><div class="flex flex-col w-full px-margin pb-space-xl">
+<!-- Atmospheric Ambient Glow Backdrop Header -->
+<div class="relative w-full rounded-xl overflow-hidden bg-surface-container-low shadow-xl p-space-lg mb-space-lg">
+<div class="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-primary-container/20 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-10 -left-10 w-44 h-44 rounded-full bg-secondary-container/15 blur-3xl pointer-events-none"></div>
+<!-- Curator Tag & Title -->
+<div class="relative z-10 flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="relative w-10 h-10 rounded-full overflow-hidden bg-surface-container-high shadow-md">
+<img class="w-full h-full object-cover" data-alt="Close up moody portrait of a young film director with cinematic warm amber key lighting and deep noir shadows, urban aesthetic, 35mm film grain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFZg73um7anHalbYSerL6iz2v6FZ4aSurQVcWthG0ZYxHwiRol6HsrQW0E4k260E8sJzYbABejLhmFvmb6Td2kFzGwKFlnhYGXQUoCQj4HdhD8hQE8GjdKohFCN6ZJ52jLhV5mWMiy2J6yonKrUGyRukc88hp6r7e9Fpd2tCTfIELHSPo0ddZ7Xt8ODN5SzoLaNOIaKUcjXhk3jRocq5h4d1U7uMtVM8cGkx-nv3q1JGPjZO-EzaOE"/>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface">@cinematic_wanderer</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[11px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                PRO
+              </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Curated Collection</span>
+</div>
+</div>
+<button class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant active:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">bookmark_add</span>
+</button>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight mt-space-xs">
+        Neon Noir &amp; Dystopian Visions
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+        A high-contrast journey through neon-drenched rainy streets, synthetic dreams, and cybernetic alienation from 1982 to 2024.
+      </p>
+<!-- Stats Capsule Cluster -->
+<div class="flex flex-wrap items-center gap-2 pt-space-xs text-on-surface-variant font-label-md text-label-md">
+<span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container">
+<span class="material-symbols-outlined text-[14px] text-primary">movie</span>
+          42 Films
+        </span>
+<span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+          3.8k Likes
+        </span>
+<span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container">
+<span class="material-symbols-outlined text-[14px] text-primary">content_copy</span>
+          892 Clones
+        </span>
+</div>
+</div>
+</div>
+<!-- Interactive Action Rail -->
+<div class="grid grid-cols-3 gap-space-sm mb-space-lg">
+<button class="flex items-center justify-center gap-1.5 py-3 px-space-sm rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-md active:scale-95 transition-all" id="saveCloneBtn" onclick="toggleSaveState(this)">
+<span class="material-symbols-outlined text-[18px]" id="cloneIcon">library_add</span>
+<span id="cloneLabel">Clone List</span>
+</button>
+<button class="flex items-center justify-center gap-1.5 py-3 px-space-sm rounded-xl bg-surface-container-high text-on-surface font-label-lg text-label-lg shadow-sm active:scale-95 transition-all" id="likeBtn" onclick="toggleLike(this)">
+<span class="material-symbols-outlined text-[18px] text-primary" id="likeIcon">favorite_border</span>
+<span id="likeCountText">3.8k</span>
+</button>
+<button class="flex items-center justify-center gap-1.5 py-3 px-space-sm rounded-xl bg-surface-container-high text-on-surface font-label-lg text-label-lg shadow-sm active:scale-95 transition-all" onclick="shareCollection()">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span>Share</span>
+</button>
+</div>
+<!-- User List Progress Card -->
+<div class="flex flex-col gap-space-sm p-space-md rounded-xl bg-surface-container mb-space-lg shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-lg text-label-lg text-on-surface">Your Tracker Progress</span>
+</div>
+<span class="font-data-mono text-data-mono text-primary font-bold">18 / 42 (43%)</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container-lowest rounded-full overflow-hidden p-0.5">
+<div class="h-full rounded-full bg-gradient-to-r from-primary to-secondary transition-all duration-700" style="width: 43%;"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>24 undiscovered titles left</span>
+<span class="text-primary font-medium">Ranked Edition</span>
+</div>
+</div>
+<!-- Filter & Sort Strip -->
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-headline-sm text-headline-sm text-on-surface">Curated Order</span>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface font-label-md text-label-md shadow-sm">
+<span>Sort: Highest Rated</span>
+<span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</button>
+</div>
+<!-- Curated Film Collection Items -->
+<div class="flex flex-col gap-space-md">
+<!-- Item 1: Blade Runner 2049 -->
+<div class="flex gap-space-md p-space-sm rounded-xl bg-surface-container-low shadow-sm relative overflow-hidden">
+<!-- Ambient Poster Glow -->
+<div class="relative w-24 h-36 flex-shrink-0 rounded-lg overflow-hidden bg-surface-container-high shadow-md">
+<img class="w-full h-full object-cover" data-alt="Futuristic neon holographic city under heavy rainfall with orange hazmat silhouette standing against a monumental cyberpunk cityscape in Blade Runner aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI703wzqBO1dTY4wDsl6JGck3zv5_HbSNE6b4VSvQX876dNlzvqEe53tdkwzDsSqbj6k8Zu8SsmKDf9U9EdAaFr13VQW9930TGmJMKBbVrCtXQ5zWlJsfRnWZg6Nk25UlzVDGu0_owIiqTvv6aosULpMbYvT7g7GNHbq4qq4nIomgbCUlknobJXQwXsvzXwLhfLd8TCx_tR9oDsBAl5viwUj2d5SX2ouHSwBfGcED9iRh1kxKrY-dP"/>
+<div class="absolute top-1.5 left-1.5 bg-surface-container-lowest/85 backdrop-blur-md px-1.5 py-0.5 rounded font-label-sm text-label-sm text-primary font-bold">
+          #1
+        </div>
+</div>
+<div class="flex flex-col justify-between py-1 flex-1 min-w-0">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-start justify-between gap-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Blade Runner 2049</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant shrink-0">2017</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Dir. Denis Villeneuve</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-flex items-center gap-1 font-label-md text-label-md text-primary bg-surface-container px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              4.7
+            </span>
+<span class="font-data-mono text-data-mono text-on-surface-variant">Letterboxd</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2 pt-2 bg-surface-container/30 px-2 py-1 rounded-lg">
+<span class="inline-flex items-center gap-1 text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            Watched
+          </span>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 2: Akira -->
+<div class="flex gap-space-md p-space-sm rounded-xl bg-surface-container-low shadow-sm relative overflow-hidden">
+<div class="relative w-24 h-36 flex-shrink-0 rounded-lg overflow-hidden bg-surface-container-high shadow-md">
+<img class="w-full h-full object-cover" data-alt="Iconic red cyberpunk motorbike parked on cracked asphalt in high tech post-apocalyptic Neo Tokyo with towering dark skyscrapers glowing in crimson red light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOCYnVO7bK5FhIL4XIZmYzmnx-1ry1KxCVXS8FPUV6gumVwORdAK09DY4pquN1Hg20Ryb1HfDQCGq2Dz-aJa00c0zRVhgY94qQwrukCPnMjDp9LYLrPAF33wT_tKVByEgW9_qjcJdjuJJ_AVZ__cvzXECO_IoStTyo85Z1uLy7jlZ_DV9ajzoYYRElNNmhJo52tal4T57WOH7x_N5GMorUjFJpxF2iVm45XbNlYSmKudrwOzre7yVi"/>
+<div class="absolute top-1.5 left-1.5 bg-surface-container-lowest/85 backdrop-blur-md px-1.5 py-0.5 rounded font-label-sm text-label-sm text-primary font-bold">
+          #2
+        </div>
+</div>
+<div class="flex flex-col justify-between py-1 flex-1 min-w-0">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-start justify-between gap-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Akira</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant shrink-0">1988</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Dir. Katsuhiro Otomo</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-flex items-center gap-1 font-label-md text-label-md text-primary bg-surface-container px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              4.5
+            </span>
+<span class="font-data-mono text-data-mono text-on-surface-variant">Letterboxd</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2 pt-2 bg-surface-container/30 px-2 py-1 rounded-lg">
+<span class="inline-flex items-center gap-1 text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            Watched
+          </span>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 3: Dark City -->
+<div class="flex gap-space-md p-space-sm rounded-xl bg-surface-container-low shadow-sm relative overflow-hidden">
+<div class="relative w-24 h-36 flex-shrink-0 rounded-lg overflow-hidden bg-surface-container-high shadow-md">
+<img class="w-full h-full object-cover" data-alt="Surreal gothic art-deco city at perpetual midnight with tall twisted architecture and shadowy trenchcoat figures bathed in sickly green and gold streetlamp glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAklAEK-pweE8fFDsHgsg8UngCStzuS4cNU_j6Y7BzY8wcYnpNMRmEAjLfMvpheOwsh5zANxHZU2nx59HDvyQAE4MXrPmuTDAN38QvIG-17AiE8J9tk6re28FHRcehsvk0aPSvta02KrznEwbcaH_rZO62jhDI4zC8bM4iSNJp__dMiLIN_pcXvJnref3D-fCaMCV_t-TaUzcMABLwaeYS7JptELIpk3zU1PciMy0iGclVL7xhPw94w"/>
+<div class="absolute top-1.5 left-1.5 bg-surface-container-lowest/85 backdrop-blur-md px-1.5 py-0.5 rounded font-label-sm text-label-sm text-primary font-bold">
+          #3
+        </div>
+</div>
+<div class="flex flex-col justify-between py-1 flex-1 min-w-0">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-start justify-between gap-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Dark City</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant shrink-0">1998</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Dir. Alex Proyas</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-flex items-center gap-1 font-label-md text-label-md text-primary bg-surface-container px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              4.1
+            </span>
+<span class="font-data-mono text-data-mono text-on-surface-variant">Letterboxd</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2 pt-2">
+<button class="flex items-center gap-1 px-3 py-1 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md active:bg-primary-container active:text-on-primary-container transition-colors" onclick="toggleWatchlist(this)">
+<span class="material-symbols-outlined text-[14px]">bookmark</span>
+<span>Add to Watchlist</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 4: Ghost in the Shell -->
+<div class="flex gap-space-md p-space-sm rounded-xl bg-surface-container-low shadow-sm relative overflow-hidden">
+<div class="relative w-24 h-36 flex-shrink-0 rounded-lg overflow-hidden bg-surface-container-high shadow-md">
+<img class="w-full h-full object-cover" data-alt="Cyborg woman profile submerged in deep turquoise cyber-fluid with glowing fiber optic cables flowing from neural ports in dark dystopian anime style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_kqaJV2HGpJI2d7vqlB_6ZusIwILr5Ziy1Nd_KsGB4prwcGIJPMhlLQYHGFTYh1B_FeAg39_o7dASjtorfOit7mU10nMI8sU3FDtA8VskStQzIyqHB0w-F45hb1JkCWA-gwKaA5vbxP_CO98tTIMi9G3qMf5CbU9UFiFpg_emxB_zJQFvyf_wRxf42xX8wzrbWpDegjCJ1JQK-4cdbooy4cdbVMF4fgdQglMSOyaJajFh3waIdJEX"/>
+<div class="absolute top-1.5 left-1.5 bg-surface-container-lowest/85 backdrop-blur-md px-1.5 py-0.5 rounded font-label-sm text-label-sm text-primary font-bold">
+          #4
+        </div>
+</div>
+<div class="flex flex-col justify-between py-1 flex-1 min-w-0">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-start justify-between gap-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Ghost in the Shell</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant shrink-0">1995</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Dir. Mamoru Oshii</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-flex items-center gap-1 font-label-md text-label-md text-primary bg-surface-container px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              4.4
+            </span>
+<span class="font-data-mono text-data-mono text-on-surface-variant">Letterboxd</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2 pt-2">
+<button class="flex items-center gap-1 px-3 py-1 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md active:bg-primary-container active:text-on-primary-container transition-colors" onclick="toggleWatchlist(this)">
+<span class="material-symbols-outlined text-[14px]">bookmark</span>
+<span>Add to Watchlist</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Load More / Discovery Cue -->
+<div class="mt-space-lg flex flex-col items-center justify-center py-space-md text-center">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">38 More Films in List</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Scroll to explore chronological archive</span>
+</div>
+</div>
+<script>
+  function toggleSaveState(button) {
+    const icon = document.getElementById('cloneIcon');
+    const label = document.getElementById('cloneLabel');
+    const isSaved = label.textContent === 'Cloned!';
+
+    if (!isSaved) {
+      icon.textContent = 'done_all';
+      label.textContent = 'Cloned!';
+      button.classList.remove('bg-primary', 'text-on-primary');
+      button.classList.add('bg-surface-container-high', 'text-primary');
+    } else {
+      icon.textContent = 'library_add';
+      label.textContent = 'Clone List';
+      button.classList.add('bg-primary', 'text-on-primary');
+      button.classList.remove('bg-surface-container-high', 'text-primary');
+    }
+  }
+
+  function toggleLike(button) {
+    const icon = document.getElementById('likeIcon');
+    const label = document.getElementById('likeCountText');
+    const isLiked = icon.style.fontVariationSettings.includes('FILL 1');
+
+    if (!isLiked) {
+      icon.style.fontVariationSettings = "'FILL' 1";
+      icon.textContent = 'favorite';
+      label.textContent = '3.9k';
+      button.classList.add('text-primary');
+    } else {
+      icon.style.fontVariationSettings = "'FILL' 0";
+      icon.textContent = 'favorite_border';
+      label.textContent = '3.8k';
+      button.classList.remove('text-primary');
+    }
+  }
+
+  function toggleWatchlist(button) {
+    const isAdded = button.getAttribute('data-added') === 'true';
+    if (!isAdded) {
+      button.setAttribute('data-added', 'true');
+      button.classList.remove('bg-surface-container-high', 'text-on-surface');
+      button.classList.add('bg-primary-container', 'text-on-primary-container');
+      button.innerHTML = '<span class="material-symbols-outlined text-[14px]">done</span><span>In Watchlist</span>';
+    } else {
+      button.setAttribute('data-added', 'false');
+      button.classList.add('bg-surface-container-high', 'text-on-surface');
+      button.classList.remove('bg-primary-container', 'text-on-primary-container');
+      button.innerHTML = '<span class="material-symbols-outlined text-[14px]">bookmark</span><span>Add to Watchlist</span>';
+    }
+  }
+
+  function shareCollection() {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Neon Noir & Dystopian Visions on CineTrack',
+        text: 'A high-contrast journey through neon-drenched dystopian cinema curated by @cinematic_wanderer.',
+        url: window.location.href,
+      }).catch(() => {});
+    }
+  }
+</script></main></body></html>

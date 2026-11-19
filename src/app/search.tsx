@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
-import { router } from "expo-router";
+import { Href, router } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
 import {
   Pressable,
@@ -14,9 +14,11 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AppText } from "@/components/app-text";
 import { Button } from "@/components/button";
 import { Chip } from "@/components/chip";
+import { PersonRow } from "@/components/person-row";
 import { EmptyState, ErrorState, Loading } from "@/components/states";
 import { colors, fonts, radius, spacing, noOutline } from "@/constants/theme";
 import { openMedia } from "@/lib/nav";
+import { searchUsers } from "@/lib/social";
 import { useStore } from "@/lib/store";
 import { GENRES, getTrending, searchMulti, sized } from "@/lib/tmdb";
 import { MediaRef, MediaType } from "@/lib/types";
@@ -55,6 +57,7 @@ export default function SearchScreen() {
   }, [text]);
 
   const results = useAsync(() => searchMulti(query), [query]);
+  const users = useAsync(() => searchUsers(query), [query]);
   const trending = useAsync(() => getTrending("all"), []);
 
   const activeFilters =
@@ -94,7 +97,7 @@ export default function SearchScreen() {
           <TextInput
             value={text}
             onChangeText={setText}
-            placeholder="Film, dizi ara..."
+            placeholder="Film, dizi ya da kişi ara..."
             placeholderTextColor={colors.textTertiary}
             style={styles.input}
             autoFocus
@@ -201,6 +204,15 @@ export default function SearchScreen() {
               </View>
             )}
           </>
+        )}
+
+        {!!query && (users.data?.length ?? 0) > 0 && (
+          <View style={styles.block}>
+            <AppText variant="title">Kişiler</AppText>
+            {users.data?.map((u) => (
+              <PersonRow key={u.id} person={u} onPress={() => router.push(`/user/${u.handle}` as Href)} />
+            ))}
+          </View>
         )}
 
         {!!query && results.loading && <Loading />}

@@ -59,6 +59,7 @@ export default function RootLayout() {
           <Stack.Screen name="media/[type]/[id]" />
           <Stack.Screen name="person/[id]" />
           <Stack.Screen name="user/[handle]" />
+          <Stack.Screen name="people/[handle]" />
           <Stack.Screen name="post/[id]" />
           <Stack.Screen name="search" />
           <Stack.Screen name="profile" />

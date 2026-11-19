@@ -1,308 +1,289 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
-import { ReactNode, useMemo, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, View } from "react-native";
+import { Href, router, useFocusEffect } from "expo-router";
+import { ReactNode, useCallback, useMemo, useState } from "react";
+import { Pressable, RefreshControl, ScrollView, StyleSheet, View } from "react-native";
 
 import { AppHeader } from "@/components/app-header";
 import { AppText } from "@/components/app-text";
-import { Button } from "@/components/button";
+import { Avatar } from "@/components/avatar";
 import { Chip } from "@/components/chip";
+import { SpoilerMask } from "@/components/review-card";
 import { StarRating } from "@/components/star-rating";
-import { EmptyState, Loading } from "@/components/states";
+import { EmptyState, ErrorState, Loading } from "@/components/states";
 import { colors, radius, spacing } from "@/constants/theme";
-import {
-  allDemoIds,
-  DEMO_COMMENTS,
-  DEMO_FRIENDS,
-  DEMO_POSTS,
-  loadRefs,
-} from "@/lib/demo-feed";
+import { useAuth } from "@/lib/auth-store";
 import { formatCount, formatEpisodeCode, timeAgo } from "@/lib/format";
 import { openMedia, openPost, openSearch } from "@/lib/nav";
+import {
+  FeedActivity,
+  FeedItem,
+  FeedReview,
+  FeedScope,
+  fetchFeed,
+  setReviewLike,
+  useSocial,
+} from "@/lib/social";
 import { useStore } from "@/lib/store";
 import { sized } from "@/lib/tmdb";
 import { MediaRef } from "@/lib/types";
 import { useAsync } from "@/lib/use-async";
 
-type Tab = "all" | "popular" | "mine";
+const openUser = (handle: string) => handle && router.push(`/user/${handle}` as Href);
+
+const ACTIVITY_LABEL: Record<FeedActivity["kind"], string> = {
+  watched: "izledi",
+  episode: "bölüm izledi",
+  rated: "puan verdi",
+};
 
 export default function ActivityScreen() {
-  const [tab, setTab] = useState<Tab>("all");
-  const reviews = useStore((s) => s.reviews);
-  const profile = useStore((s) => s.profile);
-  const likes = useStore((s) => s.likes);
-  const comments = useStore((s) => s.comments);
-  const toggleLike = useStore((s) => s.toggleLike);
-  const toggleWatchlist = useStore((s) => s.toggleWatchlist);
-  const entries = useStore((s) => s.entries);
+  const [picked, setPicked] = useState<FeedScope | null>(null);
+  const followingIds = useSocial((s) => s.following);
+  const followingKey = Object.keys(followingIds).sort().join(",");
+  const followingCount = followingKey ? followingKey.split(",").length : 0;
 
-  const refs = useAsync(() => loadRefs(allDemoIds), []);
-  const lookup = refs.data ?? {};
+  // Kimseyi takip etmiyorsan, boş bir akış yerine herkesin paylaşımları açılır.
+  const scope: FeedScope = picked ?? (followingCount > 0 ? "following" : "all");
 
-  const mine = useMemo(
-    () =>
-      reviews.slice(0, 10).map((r) => ({
-        id: `mine-${r.id}`,
-        user: profile.name,
-        at: r.createdAt,
-        review: r,
-      })),
-    [reviews, profile.name],
+  const feed = useAsync(() => fetchFeed(scope), [scope, followingKey]);
+  const [refreshing, setRefreshing] = useState(false);
+
+  // Sekmeye dönünce akışı tazele
+  const reload = feed.reload;
+  useFocusEffect(
+    useCallback(() => {
+      reload();
+    }, [reload]),
   );
 
-  const demo = [...DEMO_POSTS].sort((a, b) =>
-    tab === "popular" ? b.likes - a.likes : a.hoursAgo - b.hoursAgo,
-  );
+  const items = useMemo(() => feed.data ?? [], [feed.data]);
 
-  const commentCount = (postId: string) =>
-    (DEMO_COMMENTS[postId]?.length ?? 0) + (comments[postId]?.length ?? 0);
+  // "Şu an izleyenler": takip ettiklerinin en son aktiviteleri (kişi başına bir tane)
+  const live = useMemo(() => {
+    if (scope !== "following") return [];
+    const seen = new Set<string>();
+    const out: FeedActivity[] = [];
+    for (const it of items) {
+      if (it.type !== "activity" || seen.has(it.author.userId)) continue;
+      seen.add(it.author.userId);
+      out.push(it);
+    }
+    return out.slice(0, 12);
+  }, [items, scope]);
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    reload();
+    setTimeout(() => setRefreshing(false), 700);
+  };
 
   return (
     <View style={styles.screen}>
       <AppHeader />
-      <ScrollView contentContainerStyle={styles.content}>
+      <ScrollView
+        contentContainerStyle={styles.content}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={colors.primary} />}
+      >
         <View style={styles.titleRow}>
           <AppText variant="display">Akış</AppText>
-        </View>
-
-        <View style={styles.demoBanner}>
-          <Ionicons name="flask-outline" size={18} color={colors.primary} />
-          <AppText variant="bodySmall" style={{ flex: 1 }}>
-            Bu akış örnek verilerle gösteriliyor. Arkadaş ve takip özellikleri hesap sistemi
-            bağlandığında gerçek olacak. Kendi yazdıkların şimdiden burada.
-          </AppText>
+          <Pressable style={styles.findBtn} onPress={openSearch} accessibilityLabel="Kişi bul">
+            <Ionicons name="person-add-outline" size={18} color={colors.primary} />
+            <AppText variant="label" color={colors.primary}>
+              Kişi bul
+            </AppText>
+          </Pressable>
         </View>
 
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chips}>
-          <Chip label="Herkes" active={tab === "all"} onPress={() => setTab("all")} />
-          <Chip label="Popüler" active={tab === "popular"} onPress={() => setTab("popular")} />
-          <Chip label="Benimkiler" active={tab === "mine"} onPress={() => setTab("mine")} />
+          <Chip label="Takip ettiklerim" active={scope === "following"} onPress={() => setPicked("following")} />
+          <Chip label="Herkes" active={scope === "all"} onPress={() => setPicked("all")} />
+          <Chip label="Benimkiler" active={scope === "mine"} onPress={() => setPicked("mine")} />
         </ScrollView>
 
-        {tab === "all" && (
+        {live.length > 0 && (
           <View style={styles.live}>
-            <AppText variant="overline">Şu an izleyenler</AppText>
+            <AppText variant="overline">Son zamanlarda izleyenler</AppText>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.stories}>
-              {DEMO_FRIENDS.map((f) => {
-                const m = lookup[`${f.watching.type}:${f.watching.id}`];
-                return (
-                  <Pressable key={f.name} style={styles.story} onPress={() => openMedia(f.watching.type, f.watching.id)}>
-                    <View style={styles.ring}>
-                      <View style={styles.storyAvatar}>
-                        {m?.posterUrl ? (
-                          <Image
-                            source={{ uri: sized(m.posterUrl, "w154") ?? m.posterUrl }}
-                            style={styles.fill}
-                            contentFit="cover"
-                          />
-                        ) : (
-                          <AppText variant="label">{f.name.slice(0, 1)}</AppText>
-                        )}
-                      </View>
+              {live.map((a) => (
+                <Pressable key={a.id} style={styles.story} onPress={() => openMedia(a.ref.type, a.ref.id)}>
+                  <View style={styles.ring}>
+                    <View style={styles.storyAvatar}>
+                      {a.ref.posterUrl ? (
+                        <Image
+                          source={{ uri: sized(a.ref.posterUrl, "w154") ?? a.ref.posterUrl }}
+                          style={styles.fill}
+                          contentFit="cover"
+                        />
+                      ) : (
+                        <AppText variant="label">{a.author.name.slice(0, 1)}</AppText>
+                      )}
                     </View>
-                    <AppText variant="caption" numberOfLines={1}>
-                      {f.name}
-                    </AppText>
-                  </Pressable>
-                );
-              })}
+                  </View>
+                  <AppText variant="caption" numberOfLines={1}>
+                    {a.author.name}
+                  </AppText>
+                </Pressable>
+              ))}
             </ScrollView>
           </View>
         )}
 
-        {refs.loading && !refs.data && <Loading />}
+        {feed.loading && !feed.data && <Loading />}
+        {feed.error && <ErrorState message={feed.error} onRetry={feed.reload} />}
 
-        {tab !== "popular" &&
-          mine.map((m) => {
-            const r = m.review;
-            const isEp = r.season !== null && r.episode !== null;
-            const liked = !!likes[m.id];
-            return (
-              <PostShell
-                key={m.id}
-                user={m.user}
-                label={isEp ? "bölüm günlüğü yazdı" : "inceleme yazdı"}
-                time={timeAgo(m.at)}
-                onPress={() => openPost(m.id)}
-              >
-                <MediaHeader
-                  ref_={r.ref}
-                  rating={r.rating ?? undefined}
-                  sub={isEp ? formatEpisodeCode(r.season as number, r.episode as number) : undefined}
-                />
-                {!!r.text && (
-                  <AppText variant="body" numberOfLines={5}>
-                    {r.text}
-                  </AppText>
-                )}
-                <PostActions
-                  liked={liked}
-                  likeCount={liked ? 1 : 0}
-                  commentCount={commentCount(m.id)}
-                  onLike={() => toggleLike(m.id)}
-                  onComments={() => openPost(m.id)}
-                />
-              </PostShell>
-            );
-          })}
-
-        {tab === "mine" && mine.length === 0 && (
+        {!feed.loading && !feed.error && items.length === 0 && (
           <EmptyState
-            icon="create-outline"
-            title="Henüz yazın yok"
-            message="Bir film ya da diziye inceleme yazdığında burada görünür."
-            actionLabel="Bir şey bul"
+            icon={scope === "mine" ? "create-outline" : "people-outline"}
+            title={
+              scope === "following"
+                ? followingCount === 0
+                  ? "Henüz kimseyi takip etmiyorsun"
+                  : "Takip ettiklerin henüz bir şey paylaşmadı"
+                : scope === "mine"
+                  ? "Henüz paylaşımın yok"
+                  : "Henüz paylaşım yok"
+            }
+            message={
+              scope === "following" && followingCount === 0
+                ? "Arkadaşlarını bul ve takip et, izledikleri ve yazdıkları burada görünsün."
+                : scope === "mine"
+                  ? "Bir film ya da diziye inceleme yazdığında burada görünür."
+                  : "Bir film ya da diziye inceleme yazan ilk kişi sen olabilirsin."
+            }
+            actionLabel={scope === "following" ? "Kişi bul" : "Bir şey bul"}
             onAction={openSearch}
           />
         )}
 
-        {tab !== "mine" &&
-          demo.map((p) => {
-            const media = lookup[`${p.media.type}:${p.media.id}`];
-            const liked = !!likes[p.id];
-            const inList = !!entries[`${p.media.type}:${p.media.id}`]?.watchlist;
-            return (
-              <PostShell
-                key={p.id}
-                user={p.user}
-                label={p.kind === "list" ? "liste yayınladı" : p.kind === "episode" ? "bölüm izledi" : "inceleme yazdı"}
-                time={`${p.hoursAgo} sa önce`}
-                demo
-                onPress={() => openPost(p.id)}
-              >
-                {p.kind === "list" ? (
-                  <>
-                    <AppText variant="headline">{p.title}</AppText>
-                    <AppText variant="bodySmall">{p.text}</AppText>
-                    <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.collage}>
-                      {(p.listItems ?? []).map((m) => {
-                        const ref = lookup[`${m.type}:${m.id}`];
-                        return (
-                          <Pressable key={m.id} style={styles.collageItem} onPress={() => openMedia(m.type, m.id)}>
-                            {ref?.posterUrl && (
-                              <Image
-                                source={{ uri: sized(ref.posterUrl, "w154") ?? ref.posterUrl }}
-                                style={styles.fill}
-                                contentFit="cover"
-                              />
-                            )}
-                          </Pressable>
-                        );
-                      })}
-                    </ScrollView>
-                  </>
-                ) : (
-                  <>
-                    {media && (
-                      <MediaHeader
-                        ref_={media}
-                        rating={p.rating}
-                        sub={p.season ? formatEpisodeCode(p.season, p.episode ?? 1) : undefined}
-                      />
-                    )}
-                    {p.spoiler ? (
-                      <View style={styles.spoiler}>
-                        <Ionicons name="eye-off-outline" size={16} color={colors.primary} />
-                        <AppText variant="label" color={colors.primary}>
-                          Spoiler gizli
-                        </AppText>
-                      </View>
-                    ) : (
-                      <AppText variant="body">{p.text}</AppText>
-                    )}
-                  </>
-                )}
-                <PostActions
-                  liked={liked}
-                  likeCount={p.likes + (liked ? 1 : 0)}
-                  commentCount={commentCount(p.id)}
-                  onLike={() => toggleLike(p.id)}
-                  onComments={() => openPost(p.id)}
-                >
-                  {media && p.kind !== "list" && (
-                    <Button
-                      size="sm"
-                      variant="secondary"
-                      icon={inList ? "bookmark" : "bookmark-outline"}
-                      label={inList ? "Listemde" : "İzleme Listesi"}
-                      onPress={() => toggleWatchlist(media)}
-                    />
-                  )}
-                </PostActions>
-              </PostShell>
-            );
-          })}
+        {items.map((it: FeedItem) =>
+          it.type === "review" ? (
+            <ReviewPost key={`${it.id}:${it.likes}:${it.liked}:${it.comments}`} item={it} />
+          ) : (
+            <ActivityPost key={it.id} item={it} />
+          ),
+        )}
       </ScrollView>
     </View>
   );
 }
 
-function PostShell({
-  user,
+function ReviewPost({ item }: { item: FeedReview }) {
+  const r = item.review;
+  const me = useAuth((s) => s.session?.user.id);
+  const profile = useStore((s) => s.profile);
+  const mine = r.userId === me;
+  const name = mine ? profile.name : (r.authorName ?? "Kullanıcı");
+  const handle = mine ? profile.handle : (r.authorHandle ?? "");
+  const avatar = mine ? profile.avatarUri : (r.authorAvatar ?? null);
+
+  const [liked, setLiked] = useState(item.liked);
+  const [count, setCount] = useState(item.likes);
+  const [revealed, setRevealed] = useState(false);
+  const isEp = r.season !== null && r.episode !== null;
+
+  const toggleLike = async () => {
+    const next = !liked;
+    setLiked(next);
+    setCount((c) => c + (next ? 1 : -1));
+    const err = await setReviewLike(r.id, next);
+    if (err) {
+      setLiked(!next);
+      setCount((c) => c + (next ? -1 : 1));
+    }
+  };
+
+  return (
+    <Shell
+      name={name}
+      avatar={avatar}
+      label={isEp ? "bölüm günlüğü yazdı" : "inceleme yazdı"}
+      time={timeAgo(item.at)}
+      onAuthor={() => openUser(handle)}
+      onPress={() => openPost(item.id)}
+    >
+      <MediaHeader
+        ref_={r.ref}
+        rating={r.rating ?? undefined}
+        sub={isEp ? formatEpisodeCode(r.season as number, r.episode as number) : undefined}
+      />
+      {r.spoiler && !revealed ? (
+        <SpoilerMask text={r.text} onReveal={() => setRevealed(true)} />
+      ) : (
+        !!r.text && (
+          <AppText variant="body" numberOfLines={6}>
+            {r.text}
+          </AppText>
+        )
+      )}
+      <View style={styles.actions}>
+        <Pressable style={styles.act} onPress={toggleLike} hitSlop={8}>
+          <Ionicons
+            name={liked ? "heart" : "heart-outline"}
+            size={20}
+            color={liked ? colors.primary : colors.textSecondary}
+          />
+          <AppText variant="caption">{formatCount(count)}</AppText>
+        </Pressable>
+        <Pressable style={styles.act} onPress={() => openPost(item.id)} hitSlop={8}>
+          <Ionicons name="chatbubble-outline" size={18} color={colors.textSecondary} />
+          <AppText variant="caption">{item.comments}</AppText>
+        </Pressable>
+      </View>
+    </Shell>
+  );
+}
+
+function ActivityPost({ item }: { item: FeedActivity }) {
+  const a = item.author;
+  return (
+    <Shell
+      name={a.name}
+      avatar={a.avatar}
+      label={ACTIVITY_LABEL[item.kind]}
+      time={timeAgo(item.at)}
+      onAuthor={() => openUser(a.handle)}
+      onPress={() => openMedia(item.ref.type, item.ref.id)}
+    >
+      <MediaHeader
+        ref_={item.ref}
+        rating={item.kind === "rated" ? (item.rating ?? undefined) : undefined}
+        sub={item.kind === "episode" ? (item.detail ?? undefined) : undefined}
+      />
+    </Shell>
+  );
+}
+
+function Shell({
+  name,
+  avatar,
   label,
   time,
-  demo,
+  onAuthor,
   onPress,
   children,
 }: {
-  user: string;
+  name: string;
+  avatar: string | null;
   label: string;
   time: string;
-  demo?: boolean;
+  onAuthor: () => void;
   onPress: () => void;
   children: ReactNode;
 }) {
   return (
     <Pressable style={styles.post} onPress={onPress} accessibilityRole="button">
-      <View style={styles.postTop}>
-        <View style={styles.avatar}>
-          <AppText variant="label" color={colors.onPrimary}>
-            {user.slice(0, 1).toUpperCase()}
-          </AppText>
-        </View>
+      <Pressable style={styles.postTop} onPress={onAuthor}>
+        <Avatar name={name} uri={avatar} size={38} />
         <View style={{ flex: 1 }}>
           <AppText variant="title">
-            {user} <AppText variant="caption">{label}</AppText>
+            {name} <AppText variant="caption">{label}</AppText>
           </AppText>
-          <AppText variant="caption">
-            {time}
-            {demo ? " • örnek" : ""}
-          </AppText>
+          <AppText variant="caption">{time}</AppText>
         </View>
-      </View>
+      </Pressable>
       {children}
     </Pressable>
-  );
-}
-
-function PostActions({
-  liked,
-  likeCount,
-  commentCount,
-  onLike,
-  onComments,
-  children,
-}: {
-  liked: boolean;
-  likeCount: number;
-  commentCount: number;
-  onLike: () => void;
-  onComments: () => void;
-  children?: ReactNode;
-}) {
-  return (
-    <View style={styles.actions}>
-      <Pressable style={styles.act} onPress={onLike} hitSlop={8}>
-        <Ionicons name={liked ? "heart" : "heart-outline"} size={20} color={liked ? colors.primary : colors.textSecondary} />
-        <AppText variant="caption">{formatCount(likeCount)}</AppText>
-      </Pressable>
-      <Pressable style={styles.act} onPress={onComments} hitSlop={8}>
-        <Ionicons name="chatbubble-outline" size={18} color={colors.textSecondary} />
-        <AppText variant="caption">{commentCount}</AppText>
-      </Pressable>
-      <View style={{ flex: 1 }} />
-      {children}
-    </View>
   );
 }
 
@@ -314,7 +295,7 @@ function MediaHeader({ ref_, rating, sub }: { ref_: MediaRef; rating?: number; s
           {ref_.title}
           {ref_.year ? <AppText variant="caption">  {ref_.year}</AppText> : null}
         </AppText>
-        {sub && (
+        {!!sub && (
           <AppText variant="caption" color={colors.primaryLight}>
             {sub}
           </AppText>
@@ -337,14 +318,15 @@ function MediaHeader({ ref_, rating, sub }: { ref_: MediaRef; rating?: number; s
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
   content: { padding: spacing.lg, paddingTop: spacing.sm, gap: spacing.lg, paddingBottom: spacing.xxl * 2 },
-  titleRow: { flexDirection: "row", alignItems: "center" },
-  demoBanner: {
+  titleRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
+  findBtn: {
     flexDirection: "row",
-    gap: spacing.md,
     alignItems: "center",
+    gap: 6,
     backgroundColor: colors.primarySoft,
-    borderRadius: radius.lg,
-    padding: spacing.md,
+    borderRadius: radius.full,
+    paddingHorizontal: spacing.md,
+    paddingVertical: 7,
   },
   chips: { gap: spacing.sm },
   live: { gap: spacing.sm },
@@ -376,14 +358,6 @@ const styles = StyleSheet.create({
     gap: spacing.md,
   },
   postTop: { flexDirection: "row", alignItems: "center", gap: spacing.sm },
-  avatar: {
-    width: 38,
-    height: 38,
-    borderRadius: radius.full,
-    backgroundColor: colors.primary,
-    alignItems: "center",
-    justifyContent: "center",
-  },
   media: {
     flexDirection: "row",
     gap: spacing.md,
@@ -398,23 +372,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
     overflow: "hidden",
   },
-  spoiler: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: spacing.sm,
-    paddingVertical: spacing.lg,
-    borderRadius: radius.md,
-    backgroundColor: colors.surfaceHigh,
-  },
   actions: { flexDirection: "row", alignItems: "center", gap: spacing.lg },
   act: { flexDirection: "row", alignItems: "center", gap: spacing.xs + 2 },
-  collage: { gap: spacing.sm },
-  collageItem: {
-    width: 90,
-    height: 135,
-    borderRadius: radius.md,
-    backgroundColor: colors.surfaceHigh,
-    overflow: "hidden",
-  },
 });

@@ -68,7 +68,7 @@ export type PublicProfile = {
   avatarUrl: string | null;
 };
 
-type ProfileRow = {
+export type ProfileRow = {
   id: string;
   handle: string;
   name: string;
@@ -77,7 +77,7 @@ type ProfileRow = {
   avatar_url: string | null;
 };
 
-const toProfile = (r: ProfileRow): PublicProfile => ({
+export const toProfile = (r: ProfileRow): PublicProfile => ({
   id: r.id,
   handle: r.handle,
   name: r.name,
@@ -98,7 +98,7 @@ export async function fetchProfileByHandle(handle: string): Promise<PublicProfil
 
 // ---------- Yorumlar ----------
 
-type ReviewRow = {
+export type ReviewRow = {
   id: string;
   user_id: string;
   media_key: string;
@@ -141,7 +141,7 @@ export function reviewToRow(r: Review, uid: string) {
   };
 }
 
-function rowToReview(row: ReviewRow): Review {
+export function rowToReview(row: ReviewRow): Review {
   const ref: MediaRef = {
     key: row.media_key,
     type: row.media_type,
@@ -174,7 +174,7 @@ function rowToReview(row: ReviewRow): Review {
   };
 }
 
-const SELECT = "*, profiles(handle,name,avatar_url)";
+export const REVIEW_SELECT = "*, profiles(handle,name,avatar_url)";
 
 /** Bir yapımın (ya da tek bir bölümün) herkese açık yorumları. */
 export async function fetchReviews(
@@ -182,7 +182,7 @@ export async function fetchReviews(
   season?: number,
   episode?: number,
 ): Promise<Review[]> {
-  let q = supabase.from("reviews").select(SELECT).eq("media_key", mediaKey);
+  let q = supabase.from("reviews").select(REVIEW_SELECT).eq("media_key", mediaKey);
   if (season !== undefined && episode !== undefined) {
     q = q.eq("season", season).eq("episode", episode);
   }
@@ -194,7 +194,7 @@ export async function fetchReviews(
 export async function fetchUserReviews(userId: string): Promise<Review[]> {
   const { data, error } = await supabase
     .from("reviews")
-    .select(SELECT)
+    .select(REVIEW_SELECT)
     .eq("user_id", userId)
     .order("created_at", { ascending: false })
     .limit(50);

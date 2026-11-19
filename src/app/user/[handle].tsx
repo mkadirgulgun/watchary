@@ -1,15 +1,19 @@
 import { Ionicons } from "@expo/vector-icons";
-import { router, useLocalSearchParams } from "expo-router";
+import { Href, router, useLocalSearchParams } from "expo-router";
+import { useState } from "react";
 import { Pressable, ScrollView, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { AppText } from "@/components/app-text";
 import { Avatar } from "@/components/avatar";
+import { Button } from "@/components/button";
 import { ReviewCard } from "@/components/review-card";
 import { ErrorState, Loading } from "@/components/states";
 import { colors, radius, spacing } from "@/constants/theme";
 import { fetchProfileByHandle, fetchUserReviews } from "@/lib/community";
+import { useAuth } from "@/lib/auth-store";
 import { openMedia } from "@/lib/nav";
+import { fetchFollowCounts, setFollow, useIsFollowing } from "@/lib/social";
 import { useAsync } from "@/lib/use-async";
 
 /** Başka bir kullanıcının herkese açık profili: bilgileri ve yazdığı incelemeler. */
@@ -26,6 +30,28 @@ export default function UserProfileScreen() {
 
   const back = () => (router.canGoBack() ? router.back() : router.replace("/"));
   const p = profile.data;
+
+  const me = useAuth((s) => s.session?.user.id);
+  const isMe = !!p && p.id === me;
+  const following = useIsFollowing(p?.id);
+  const [busy, setBusy] = useState(false);
+  const [followError, setFollowError] = useState<string | null>(null);
+  // Takip durumu değişince sayılar yeniden okunur
+  const counts = useAsync(
+    () => (p ? fetchFollowCounts(p.id) : Promise.resolve(null)),
+    [p?.id, following],
+  );
+
+  const toggleFollow = async () => {
+    if (!p || busy) return;
+    setBusy(true);
+    setFollowError(null);
+    const err = await setFollow(p.id, !following);
+    setBusy(false);
+    if (err) setFollowError(err);
+  };
+  const openPeople = (type: "followers" | "following") =>
+    router.push(`/people/${p?.handle}?type=${type}` as Href);
 
   return (
     <View style={styles.screen}>
@@ -72,10 +98,43 @@ export default function UserProfileScreen() {
                 {p.bio}
               </AppText>
             )}
-            <View style={styles.count}>
-              <AppText variant="headline">{reviews.data?.length ?? 0}</AppText>
-              <AppText variant="caption">inceleme</AppText>
+            <View style={styles.statsRow}>
+              <Pressable style={styles.statItem} onPress={() => openPeople("followers")}>
+                <AppText variant="headline">{counts.data?.followers ?? 0}</AppText>
+                <AppText variant="caption">takipçi</AppText>
+              </Pressable>
+              <Pressable style={styles.statItem} onPress={() => openPeople("following")}>
+                <AppText variant="headline">{counts.data?.following ?? 0}</AppText>
+                <AppText variant="caption">takip</AppText>
+              </Pressable>
+              <View style={styles.statItem}>
+                <AppText variant="headline">{reviews.data?.length ?? 0}</AppText>
+                <AppText variant="caption">inceleme</AppText>
+              </View>
             </View>
+
+            {isMe ? (
+              <Button
+                size="sm"
+                variant="secondary"
+                icon="create-outline"
+                label="Profili Düzenle"
+                onPress={() => router.push("/profile-edit" as Href)}
+              />
+            ) : (
+              <Button
+                icon={following ? "checkmark" : "person-add"}
+                variant={following ? "secondary" : "primary"}
+                label={following ? "Takiptesin" : "Takip Et"}
+                onPress={toggleFollow}
+                disabled={busy}
+              />
+            )}
+            {!!followError && (
+              <AppText variant="caption" color={colors.danger}>
+                {followError}
+              </AppText>
+            )}
           </View>
 
           <AppText variant="headline">İncelemeleri</AppText>
@@ -113,16 +172,17 @@ const styles = StyleSheet.create({
   head: { alignItems: "center", gap: spacing.sm, paddingBottom: spacing.md },
   center: { textAlign: "center" },
   meta: { flexDirection: "row", alignItems: "center", gap: spacing.xs + 2 },
-  count: {
-    alignItems: "center",
+  statsRow: {
+    flexDirection: "row",
     backgroundColor: colors.surface,
     borderRadius: radius.lg,
     borderWidth: 1,
     borderColor: colors.border,
     paddingVertical: spacing.sm,
-    paddingHorizontal: spacing.xl,
     marginTop: spacing.sm,
+    alignSelf: "stretch",
   },
+  statItem: { flex: 1, alignItems: "center" },
   item: { gap: spacing.xs + 2 },
   empty: { alignItems: "center", gap: spacing.sm, padding: spacing.xxl },
 });

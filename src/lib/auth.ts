@@ -1,6 +1,7 @@
 import { useAuth } from "./auth-store";
 import { useStore } from "./store";
 import { supabase } from "./supabase";
+import { clearSocial } from "./social";
 import { flushCloudSync, suspendCloudSync } from "./sync";
 
 export { useAuth };
@@ -41,4 +42,5 @@ export async function signOut(): Promise<void> {
   // Başka hesaba geçilirse eski verinin kalmaması için cihazdaki kopyayı temizle.
   useStore.getState().resetAll();
   useStore.setState({ ownerId: null });
+  clearSocial();
 }

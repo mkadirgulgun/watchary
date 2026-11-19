@@ -57,6 +57,22 @@ function BlurredText({ text }: { text: string }) {
   );
 }
 
+/** Spoiler içeren metnin yerinde duran bulanık kutu; dokununca `onReveal` çalışır. */
+export function SpoilerMask({ text, onReveal }: { text: string; onReveal: () => void }) {
+  return (
+    <Pressable style={styles.mask} onPress={onReveal}>
+      <BlurredText text={text.trim() || "Bu yorum spoiler içeriyor."} />
+      <View style={styles.maskLabel}>
+        <Ionicons name="eye-off-outline" size={18} color={colors.primary} />
+        <AppText variant="label" color={colors.primary}>
+          Spoiler içeriyor
+        </AppText>
+        <AppText variant="caption">Görmek için dokun</AppText>
+      </View>
+    </Pressable>
+  );
+}
+
 export function ReviewCard({ review, hideSpoilers = true, showAuthor = true }: Props) {
   const profile = useStore((s) => s.profile);
   const deleteReview = useStore((s) => s.deleteReview);
@@ -73,7 +89,6 @@ export function ReviewCard({ review, hideSpoilers = true, showAuthor = true }: P
     review.season !== null && review.episode !== null
       ? formatEpisodeCode(review.season, review.episode)
       : null;
-  const shown = review.text.trim() || "Bu yorum spoiler içeriyor.";
 
   const openAuthor = () => {
     if (handle) router.push(`/user/${handle}` as Href);
@@ -101,16 +116,7 @@ export function ReviewCard({ review, hideSpoilers = true, showAuthor = true }: P
       </View>
 
       {masked ? (
-        <Pressable style={styles.mask} onPress={() => setRevealed(true)}>
-          <BlurredText text={shown} />
-          <View style={styles.maskLabel}>
-            <Ionicons name="eye-off-outline" size={18} color={colors.primary} />
-            <AppText variant="label" color={colors.primary}>
-              Spoiler içeriyor
-            </AppText>
-            <AppText variant="caption">Görmek için dokun</AppText>
-          </View>
-        </Pressable>
+        <SpoilerMask text={review.text} onReveal={() => setRevealed(true)} />
       ) : (
         !!review.text && <AppText variant="body">{review.text}</AppText>
       )}

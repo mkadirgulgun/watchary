@@ -15,7 +15,10 @@ import { colors, radius, spacing } from "@/constants/theme";
 import { formatDuration } from "@/lib/format";
 import { openList, openPerson, openSearch } from "@/lib/nav";
 import { computeStats } from "@/lib/stats";
+import { useAuth } from "@/lib/auth-store";
+import { fetchFollowCounts, useSocial } from "@/lib/social";
 import { useStore } from "@/lib/store";
+import { useAsync } from "@/lib/use-async";
 import { sized } from "@/lib/tmdb";
 import { MediaRef } from "@/lib/types";
 
@@ -31,6 +34,14 @@ export default function ProfileScreen() {
   const activity = useStore((s) => s.activity);
   const lists = useStore((s) => s.lists);
   const updateProfile = useStore((s) => s.updateProfile);
+  const me = useAuth((s) => s.session?.user.id);
+  const following = useSocial((s) => s.following);
+  const counts = useAsync(
+    () => (me ? fetchFollowCounts(me) : Promise.resolve(null)),
+    [me, Object.keys(following).length],
+  );
+  const openPeople = (type: "followers" | "following") =>
+    router.push(`/people/${profile.handle}?type=${type}` as Href);
   const [picker, setPicker] = useState<"avatar" | "cover" | null>(null);
 
   const stats = useMemo(
@@ -176,6 +187,20 @@ export default function ProfileScreen() {
               {profile.bio}
             </AppText>
           )}
+          <View style={styles.followRow}>
+            <Pressable onPress={() => openPeople("followers")} hitSlop={6}>
+              <AppText variant="label">
+                {counts.data?.followers ?? 0}{" "}
+                <AppText variant="caption">takipçi</AppText>
+              </AppText>
+            </Pressable>
+            <Pressable onPress={() => openPeople("following")} hitSlop={6}>
+              <AppText variant="label">
+                {counts.data?.following ?? 0}{" "}
+                <AppText variant="caption">takip</AppText>
+              </AppText>
+            </Pressable>
+          </View>
         </View>
 
         {/* Sayılar */}
@@ -510,6 +535,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   handleRow: { flexDirection: "row", alignItems: "center", gap: spacing.xs + 2 },
+  followRow: { flexDirection: "row", gap: spacing.lg, marginTop: spacing.xs },
   strip: {
     flexDirection: "row",
     marginHorizontal: spacing.lg,

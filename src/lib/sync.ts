@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import { useAuth } from "./auth-store";
 import { ensureProfile, reviewToRow } from "./community";
 import { supabase } from "./supabase";
-import { Review, useStore } from "./store";
+import { activityToRow, loadFollowing } from "./social";
+import { Activity, Review, useStore } from "./store";
 
 const PUSH_DELAY_MS = 1500;
 
@@ -46,6 +47,23 @@ async function syncReviewChanges(uid: string, prev: Review[], cur: Review[]) {
   }
 }
 
+/** Yeni aktiviteleri (izledi, bölüm izledi, puanladı) yazar, silinenleri kaldırır. */
+async function syncActivityChanges(uid: string, prev: Activity[], cur: Activity[]) {
+  const prevIds = new Set(prev.map((a) => a.id));
+  const curIds = new Set(cur.map((a) => a.id));
+  // İncelemeler zaten reviews tablosunda; aktivite olarak ayrıca yazılmaz.
+  const added = cur.filter((a) => !prevIds.has(a.id) && a.kind !== "review");
+  const removed = prev.filter((a) => !curIds.has(a.id) && a.kind !== "review").map((a) => a.id);
+  if (added.length > 0) {
+    const { error } = await supabase.from("activities").upsert(added.map((a) => activityToRow(a, uid)));
+    if (error) console.warn("Aktivite yazılamadı:", error.message);
+  }
+  if (removed.length > 0) {
+    const { error } = await supabase.from("activities").delete().eq("user_id", uid).in("id", removed);
+    if (error) console.warn("Aktivite silinemedi:", error.message);
+  }
+}
+
 /**
  * Giriş yapılınca buluttaki kütüphaneyi çeker, sonra yerel değişiklikleri
  * kısa bir gecikmeyle buluta yazar. Bulut okunamazsa yazma kapalı kalır,
@@ -84,6 +102,9 @@ export function useCloudSync() {
       if (!ready || applying || cancelled || suspended) return;
       if (state.reviews !== prevState.reviews) {
         void syncReviewChanges(uid, prevState.reviews, state.reviews);
+      }
+      if (state.activity !== prevState.activity) {
+        void syncActivityChanges(uid, prevState.activity, state.activity);
       }
       dirty = true;
       clearTimeout(timer);
@@ -130,6 +151,16 @@ export function useCloudSync() {
           .upsert(mine.map((r) => reviewToRow(r, uid)), { onConflict: "id", ignoreDuplicates: true });
         if (backfillError) console.warn("Yorumlar yüklenemedi:", backfillError.message);
       }
+
+      // Son aktivitelerin kopyası (takipçiler akışta görsün) ve takip listesi
+      const recent = useStore.getState().activity.filter((a) => a.kind !== "review").slice(0, 40);
+      if (recent.length > 0) {
+        const { error: actError } = await supabase
+          .from("activities")
+          .upsert(recent.map((a) => activityToRow(a, uid)), { onConflict: "id", ignoreDuplicates: true });
+        if (actError) console.warn("Aktiviteler yüklenemedi:", actError.message);
+      }
+      await loadFollowing();
       if (cancelled) return;
 
       applying = false;

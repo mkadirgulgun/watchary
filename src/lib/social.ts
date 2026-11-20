@@ -15,6 +15,16 @@ import { MediaRef } from "./types";
 
 const meId = () => useAuth.getState().session?.user.id ?? null;
 
+/** Veritabanı hatalarını anlaşılır Türkçeye çevirir. */
+function dbError(error: { message: string; code?: string }): string {
+  if (error.code === "PGRST205" || error.message.includes("schema cache")) {
+    return "Sunucu henüz hazır değil: veritabanı tabloları eksik (schema-3.sql çalıştırılmalı).";
+  }
+  if (error.code === "42501") return "Bu işlem için yetkin yok.";
+  if (error.code === "23503") return "Önce profilin oluşturulmalı. Uygulamayı kapatıp yeniden aç.";
+  return error.message;
+}
+
 // ---------- Takip ----------
 
 type SocialState = {
@@ -64,7 +74,7 @@ export async function setFollow(targetId: string, follow: boolean): Promise<stri
   // 23505: zaten takip ediliyor, sorun değil
   if (error && error.code !== "23505") {
     useSocial.setState({ following: prev });
-    return error.message;
+    return dbError(error);
   }
   return null;
 }
@@ -76,8 +86,8 @@ export async function fetchFollowCounts(
     supabase.from("follows").select("*", { count: "exact", head: true }).eq("following_id", userId),
     supabase.from("follows").select("*", { count: "exact", head: true }).eq("follower_id", userId),
   ]);
-  if (a.error) throw new Error(a.error.message);
-  if (b.error) throw new Error(b.error.message);
+  if (a.error) throw new Error(dbError(a.error));
+  if (b.error) throw new Error(dbError(b.error));
   return { followers: a.count ?? 0, following: b.count ?? 0 };
 }
 
@@ -98,7 +108,7 @@ export async function fetchFollowList(
     .eq(followers ? "following_id" : "follower_id", userId)
     .order("created_at", { ascending: false })
     .limit(200);
-  if (error) throw new Error(error.message);
+  if (error) throw new Error(dbError(error));
   return (data as unknown as { p: ProfileRow | null }[])
     .map((r) => r.p)
     .filter((p): p is ProfileRow => !!p)
@@ -115,7 +125,7 @@ export async function searchUsers(query: string): Promise<PublicProfile[]> {
     .select(PROFILE_COLS)
     .or(`handle.ilike.%${q}%,name.ilike.%${q}%`)
     .limit(12);
-  if (error) throw new Error(error.message);
+  if (error) throw new Error(dbError(error));
   return (data as ProfileRow[]).map(toProfile);
 }
 
@@ -230,8 +240,8 @@ export async function fetchFeed(scope: FeedScope): Promise<FeedItem[]> {
     : Promise.resolve({ data: [] as ActivityRow[], error: null });
 
   const [revRes, actRes] = await Promise.all([reviewsReq, activitiesReq]);
-  if (revRes.error) throw new Error(revRes.error.message);
-  if (actRes.error) throw new Error(actRes.error.message);
+  if (revRes.error) throw new Error(dbError(revRes.error));
+  if (actRes.error) throw new Error(dbError(actRes.error));
 
   const reviews = (revRes.data as unknown as ReviewRow[]).map(rowToReview);
   const reviewIds = reviews.map((r) => r.id);
@@ -292,7 +302,7 @@ export async function setReviewLike(reviewId: string, like: boolean): Promise<st
   const { error } = like
     ? await supabase.from("review_likes").insert({ review_id: reviewId, user_id: uid })
     : await supabase.from("review_likes").delete().eq("review_id", reviewId).eq("user_id", uid);
-  if (error && error.code !== "23505") return error.message;
+  if (error && error.code !== "23505") return dbError(error);
   return null;
 }
 
@@ -339,7 +349,7 @@ export async function fetchThread(reviewId: string): Promise<Thread | null> {
     .select(REVIEW_SELECT)
     .eq("id", reviewId)
     .maybeSingle();
-  if (error) throw new Error(error.message);
+  if (error) throw new Error(dbError(error));
   if (!data) return null;
 
   const [likesRes, commentsRes] = await Promise.all([
@@ -371,11 +381,11 @@ export async function addReviewComment(
     .insert({ review_id: reviewId, user_id: uid, text: text.trim() })
     .select("id,user_id,text,created_at, profiles(handle,name,avatar_url)")
     .single();
-  if (error) return { comment: null, error: error.message };
+  if (error) return { comment: null, error: dbError(error) };
   return { comment: toComment(data as unknown as CommentRow), error: null };
 }
 
 export async function deleteReviewComment(commentId: string): Promise<string | null> {
   const { error } = await supabase.from("review_comments").delete().eq("id", commentId);
-  return error ? error.message : null;
+  return error ? dbError(error) : null;
 }

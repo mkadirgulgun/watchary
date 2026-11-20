@@ -8,15 +8,22 @@ import {
   PlusJakartaSans_800ExtraBold,
 } from "@expo-google-fonts/plus-jakarta-sans";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Stack as NativeStack } from "expo-router";
+import { Stack as JsStack } from "expo-router/js-stack";
 import { StatusBar } from "expo-status-bar";
-import { View } from "react-native";
+import { Platform, View } from "react-native";
 
 import { EpisodeSheetHost } from "@/components/episode-sheet";
 import { colors } from "@/constants/theme";
 import { useAuth } from "@/lib/auth";
 import { useHydrated, useStore } from "@/lib/store";
 import { useCloudSync } from "@/lib/sync";
+
+// Web'de varsayılan yığın sayfa geçişi çizmez; JavaScript tabanlı yığın web'de de animasyonlu.
+// Telefonda işletim sisteminin kendi (native) geçişi kullanılır.
+const Stack = (Platform.OS === "web" ? JsStack : NativeStack) as typeof NativeStack;
+
+const MODAL = { presentation: "modal", animation: "slide_from_bottom" } as const;
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -45,7 +52,10 @@ export default function RootLayout() {
       <Stack
         screenOptions={{
           headerShown: false,
+          animation: "slide_from_right",
           contentStyle: { backgroundColor: colors.background },
+          // JavaScript yığınında arka plan rengi cardStyle ile verilir
+          ...(Platform.OS === "web" ? { cardStyle: { backgroundColor: colors.background } } : {}),
         }}
       >
         <Stack.Protected guard={!signedIn}>
@@ -65,15 +75,9 @@ export default function RootLayout() {
           <Stack.Screen name="profile" />
           <Stack.Screen name="settings" />
           <Stack.Screen name="list/[id]" />
-          <Stack.Screen
-            name="review/[type]/[id]"
-            options={{ presentation: "modal" }}
-          />
-          <Stack.Screen
-            name="profile-edit"
-            options={{ presentation: "modal" }}
-          />
-          <Stack.Screen name="import" options={{ presentation: "modal" }} />
+          <Stack.Screen name="review/[type]/[id]" options={MODAL} />
+          <Stack.Screen name="profile-edit" options={MODAL} />
+          <Stack.Screen name="import" options={MODAL} />
         </Stack.Protected>
       </Stack>
       {signedIn && onboarded && <EpisodeSheetHost />}

@@ -8,6 +8,7 @@ import { Logo } from "@/components/logo";
 import { APP_NAME } from "@/constants/app";
 import { colors, radius, spacing } from "@/constants/theme";
 import { openProfile, openSearch } from "@/lib/nav";
+import { useUnreadCount } from "@/lib/notifications";
 import { useStore } from "@/lib/store";
 import { Href, router } from "expo-router";
 
@@ -16,7 +17,7 @@ export function AppHeader() {
   const insets = useSafeAreaInsets();
   const name = useStore((s) => s.profile.name);
   const avatarUri = useStore((s) => s.profile.avatarUri);
-  const reminderCount = useStore((s) => Object.keys(s.reminders).length);
+  const unread = useUnreadCount();
 
   return (
     <View style={[styles.bar, { paddingTop: insets.top + spacing.sm }]}>
@@ -29,12 +30,18 @@ export function AppHeader() {
           <Ionicons name="search" size={22} color={colors.text} />
         </Pressable>
         <Pressable
-          onPress={() => router.navigate("/calendar" as Href)}
+          onPress={() => router.push("/notifications" as Href)}
           hitSlop={10}
-          accessibilityLabel="Hatırlatıcılar"
+          accessibilityLabel="Bildirimler"
         >
           <Ionicons name="notifications-outline" size={22} color={colors.text} />
-          {reminderCount > 0 && <View style={styles.dot} />}
+          {unread > 0 && (
+            <View style={styles.badge}>
+              <AppText variant="overline" color={colors.onPrimary} style={styles.badgeText}>
+                {unread > 9 ? "9+" : unread}
+              </AppText>
+            </View>
+          )}
         </Pressable>
         <Pressable onPress={openProfile} accessibilityLabel="Profil">
           <Avatar name={name} uri={avatarUri} size={34} />
@@ -65,15 +72,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   actions: { flexDirection: "row", alignItems: "center", gap: spacing.lg },
-  dot: {
+  badge: {
     position: "absolute",
-    top: -2,
-    right: -2,
-    width: 8,
-    height: 8,
+    top: -6,
+    right: -8,
+    minWidth: 16,
+    height: 16,
+    paddingHorizontal: 3,
     borderRadius: radius.full,
     backgroundColor: colors.primary,
+    alignItems: "center",
+    justifyContent: "center",
   },
+  badgeText: { fontSize: 9, lineHeight: 12 },
   avatar: {
     width: 34,
     height: 34,

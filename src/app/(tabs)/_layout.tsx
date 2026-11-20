@@ -1,17 +1,18 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import { useEffect, useState } from "react";
-import { Animated, Platform, StyleSheet, View } from "react-native";
+import { Animated, Platform } from "react-native";
 
-import { colors, fonts, radius } from "@/constants/theme";
+import { AnimatedTabBar } from "@/components/animated-tab-bar";
+import { colors, fonts } from "@/constants/theme";
 
 type IconName = keyof typeof Ionicons.glyphMap;
 
 const useNative = Platform.OS !== "web";
 
 /**
- * Sekme ikonu: seçilince ikon yaylanarak büyür ve hafifçe yükselir, arkasında amber bir
- * vurgu kapsülü belirir. Seçimden çıkınca aynı animasyon tersine çalışır.
+ * Sekme ikonu: seçilince yaylanarak büyür ve hafifçe yükselir. Arkadaki amber kapsül
+ * ayrı bir bileşendir (AnimatedTabBar) ve sekmeler arasında kayar.
  */
 function TabIcon({
   name,
@@ -37,41 +38,22 @@ function TabIcon({
 
   const iconScale = progress.interpolate({ inputRange: [0, 1], outputRange: [1, 1.15] });
   const iconLift = progress.interpolate({ inputRange: [0, 1], outputRange: [0, -1] });
-  const pillScale = progress.interpolate({ inputRange: [0, 1], outputRange: [0.5, 1] });
 
   return (
-    <View style={styles.wrap}>
-      <Animated.View
-        style={[
-          styles.pill,
-          { opacity: progress, transform: [{ scaleX: pillScale }, { scaleY: pillScale }] },
-        ]}
+    <Animated.View style={{ transform: [{ translateY: iconLift }, { scale: iconScale }] }}>
+      <Ionicons
+        name={focused ? focusedName : name}
+        size={size}
+        color={focused ? colors.primary : colors.textTertiary}
       />
-      <Animated.View style={{ transform: [{ translateY: iconLift }, { scale: iconScale }] }}>
-        <Ionicons
-          name={focused ? focusedName : name}
-          size={size}
-          color={focused ? colors.primary : colors.textTertiary}
-        />
-      </Animated.View>
-    </View>
+    </Animated.View>
   );
 }
-
-const styles = StyleSheet.create({
-  wrap: { width: 58, height: 32, alignItems: "center", justifyContent: "center" },
-  pill: {
-    position: "absolute",
-    width: 58,
-    height: 32,
-    borderRadius: radius.full,
-    backgroundColor: colors.primarySoft,
-  },
-});
 
 export default function TabsLayout() {
   return (
     <Tabs
+      tabBar={(props) => <AnimatedTabBar {...props} />}
       screenOptions={{
         headerShown: false,
         // Sekmeler arası geçişte sayfa hafifçe kayar (yöne göre sola/sağa).

@@ -1,6 +1,7 @@
 import { useAuth } from "./auth-store";
 import { useStore } from "./store";
 import { supabase } from "./supabase";
+import { clearNotifications } from "./notifications";
 import { clearSocial } from "./social";
 import { flushCloudSync, suspendCloudSync } from "./sync";
 
@@ -43,4 +44,5 @@ export async function signOut(): Promise<void> {
   useStore.getState().resetAll();
   useStore.setState({ ownerId: null });
   clearSocial();
+  clearNotifications();
 }

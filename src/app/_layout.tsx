@@ -17,6 +17,7 @@ import { EpisodeSheetHost } from "@/components/episode-sheet";
 import { colors } from "@/constants/theme";
 import { useAuth } from "@/lib/auth";
 import { useHydrated, useStore } from "@/lib/store";
+import { useNotificationPolling } from "@/lib/notifications";
 import { useCloudSync } from "@/lib/sync";
 
 // Web'de varsayılan yığın sayfa geçişi çizmez; JavaScript tabanlı yığın web'de de animasyonlu.
@@ -39,6 +40,7 @@ export default function RootLayout() {
   const authReady = useAuth((s) => s.ready);
   const synced = useAuth((s) => s.synced);
   useCloudSync();
+  useNotificationPolling();
 
   const signedIn = !!session;
   // Giriş yapıldıysa, buluttaki veri gelene kadar bekle (yoksa onboarding bir an görünür).
@@ -70,6 +72,7 @@ export default function RootLayout() {
           <Stack.Screen name="person/[id]" />
           <Stack.Screen name="user/[handle]" />
           <Stack.Screen name="people/[handle]" />
+          <Stack.Screen name="notifications" />
           <Stack.Screen name="post/[id]" />
           <Stack.Screen name="search" />
           <Stack.Screen name="profile" />

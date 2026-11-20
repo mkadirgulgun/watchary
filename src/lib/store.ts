@@ -86,6 +86,8 @@ type State = {
   recentSearches: string[];
   /** Bu cihazdaki verinin sahibi olan hesabın kimliği (buluta yazılmaz) */
   ownerId: string | null;
+  /** Bildirimler en son ne zaman açıldı (bundan yeni olanlar okunmamış sayılır) */
+  notifSeenAt: number;
 };
 
 type Actions = {
@@ -126,6 +128,7 @@ type Actions = {
   toggleLike: (id: string) => void;
   updateProfile: (patch: Partial<Profile>) => void;
   setOnboarded: (value: boolean) => void;
+  markNotificationsSeen: () => void;
   importMovies: (
     items: { ref: MediaRef; rating: number | null; watchedAt: number }[],
   ) => number;
@@ -153,6 +156,7 @@ const initialState: State = {
   onboarded: false,
   recentSearches: [],
   ownerId: null,
+  notifSeenAt: 0,
 };
 
 const uid = () => `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`;
@@ -419,6 +423,7 @@ export const useStore = create<State & Actions>()(
           set((s) => ({ profile: { ...s.profile, ...patch } })),
 
         setOnboarded: (value) => set({ onboarded: value }),
+        markNotificationsSeen: () => set({ notifSeenAt: Date.now() }),
 
         importMovies: (items) => {
           let added = 0;
